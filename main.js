@@ -795,22 +795,26 @@ document.addEventListener("DOMContentLoaded", () => {
     // Category Image & Tag synchronization
     const storyProductImgs = storySection.querySelectorAll(".aqua-story__product-img");
     const storyTagText = storySection.querySelector("[data-story-tag-text]");
-    const categoryTagLabels = ["AUTOCARE", "HOME CARE", "GIG WORKERS", "CORPORATE CARE"];
+    const categoryTagLabels = ["AUTOCARE", "HOME CARE", "SOLAR CARE", "CORPORATE CARE"];
 
     let currentCategoryIdx = -1;
 
     function setActiveStoryCategory(index) {
-      if (storyProductImgs.length > 0) {
-        storyProductImgs.forEach((img, i) => {
-          if (i === index) {
-            img.classList.add("is-active");
-          } else {
-            img.classList.remove("is-active");
-          }
-        });
-      }
-      if (storyTagText && categoryTagLabels[index]) {
-        storyTagText.textContent = categoryTagLabels[index];
+      // Only switch active product image and tag label when settled at a section (index >= 0)
+      // During transitions (index === -1), device remains visible as it travels across
+      if (index >= 0) {
+        if (storyProductImgs.length > 0) {
+          storyProductImgs.forEach((img, i) => {
+            if (i === index) {
+              img.classList.add("is-active");
+            } else {
+              img.classList.remove("is-active");
+            }
+          });
+        }
+        if (storyTagText && categoryTagLabels[index]) {
+          storyTagText.textContent = categoryTagLabels[index];
+        }
       }
 
       if (currentCategoryIdx === index) return;
@@ -909,10 +913,6 @@ document.addEventListener("DOMContentLoaded", () => {
           opacity: 1
         });
         if (productFrame) gsap.set(productFrame, { rotateY: 0 });
-        if (img1) gsap.set(img1, { opacity: 1 });
-        if (img2) gsap.set(img2, { opacity: 0 });
-        if (img3) gsap.set(img3, { opacity: 0 });
-        if (img4) gsap.set(img4, { opacity: 0 });
 
         // Track bridge state to prevent flickering
         let bridgeComplete = false;
@@ -1022,33 +1022,43 @@ document.addEventListener("DOMContentLoaded", () => {
           invalidateOnRefresh: true
         });
 
-        // Row-to-Row travel timeline (starts with device already in Row 1 position)
+        // Row-to-Row travel timeline (starts with device already settled in Row 1 position)
         const storyTL = gsap.timeline({
           scrollTrigger: {
             trigger: storySection,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.7,
-            snap: {
-              snapTo: [0, 0.333, 0.667, 1],
-              duration: { min: 0.35, max: 0.6 },
-              delay: 0.1,
-              ease: "power1.inOut"
-            },
+            scrub: 0.75,
             invalidateOnRefresh: true,
             onUpdate: (self) => {
               const p = self.progress;
 
-              // Fluid Category & Video sync:
-              let activeIdx = 0;
-              if (p >= 0.83) {
-                activeIdx = 3; // Row 4 (Corporate Care)
-              } else if (p >= 0.50) {
-                activeIdx = 2; // Row 3 (Gig Workers / Solar Care)
-              } else if (p >= 0.17) {
-                activeIdx = 1; // Row 2 (Home Care)
-              } else {
-                activeIdx = 0; // Row 1 (Autocare)
+              // Complete Animation Flow — Exact 5-Phase Video & Travel Synchronization:
+              // During transition travel: video transitions out -> static image is visible.
+              // Once device settles at destination: section's background video begins playing.
+              // Device remains stationary while user explores section.
+              let activeIdx = -1;
+              if (p < 0.15) {
+                // PHASE 2 (Car & Bike Care): Settled at lower-right -> video plays, device stationary
+                activeIdx = 0;
+              } else if (p >= 0.15 && p < 0.21) {
+                // TRANSITION to Home Care: Video out, static 2.jpg visible, device traveling toward bottom-left
+                activeIdx = -1;
+              } else if (p >= 0.21 && p < 0.48) {
+                // PHASE 3 (Home & Upholstery Care): Settled at bottom-left -> video plays, device stationary
+                activeIdx = 1;
+              } else if (p >= 0.48 && p < 0.54) {
+                // TRANSITION to Solar Care: Video out, static 3.jpg visible, device traveling toward bottom-right
+                activeIdx = -1;
+              } else if (p >= 0.54 && p < 0.81) {
+                // PHASE 4 (Solar Cleaning): Settled at bottom-right -> video plays, device stationary
+                activeIdx = 2;
+              } else if (p >= 0.81 && p < 0.87) {
+                // TRANSITION to Corporate Care: Video out, static 4.jpg visible, device traveling toward bottom-left
+                activeIdx = -1;
+              } else if (p >= 0.87) {
+                // PHASE 5 (Corporate & Facility Care): Settled at bottom-left -> video plays, device stationary
+                activeIdx = 3;
               }
               setActiveStoryCategory(activeIdx);
             },

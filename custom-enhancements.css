@@ -2426,7 +2426,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-story__product-img.is-active {
-  opacity: 1;
+  opacity: 1 !important;
   z-index: 1;
 }
 
