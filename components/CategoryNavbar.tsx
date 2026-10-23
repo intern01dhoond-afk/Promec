@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MenuItem, ProductItem, HoveredLink } from "@/components/ui/navbar-menu";
+import { MenuItem, ProductItem } from "@/components/ui/navbar-menu";
 
 export function CategoryDropdown() {
   const [active, setActive] = useState<string | null>(null);
@@ -66,26 +66,6 @@ export function CategoryDropdown() {
                 scrollToUseCase("category-commercial");
               }}
             />
-          </div>
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px' }}>
-            <HoveredLink
-              href="#story"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToUseCase("story");
-              }}
-            >
-              All Accessories &rarr;
-            </HoveredLink>
-            <HoveredLink
-              href="#engineering"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToUseCase("engineering");
-              }}
-            >
-              Engineering Journal &rarr;
-            </HoveredLink>
           </div>
         </div>
       </MenuItem>

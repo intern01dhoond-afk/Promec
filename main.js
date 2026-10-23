@@ -1031,9 +1031,9 @@ document.addEventListener("DOMContentLoaded", () => {
           { x: -0.39, y: 0.26, scale: 0.80 }
         ];
         const deviceTravel = [
-          { start: 0.14, end: 0.22, from: 0, to: 1 },
-          { start: 0.46, end: 0.54, from: 1, to: 2 },
-          { start: 0.79, end: 0.87, from: 2, to: 3 }
+          { start: 0.12, end: 0.28, from: 0, to: 1 },
+          { start: 0.43, end: 0.59, from: 1, to: 2 },
+          { start: 0.76, end: 0.92, from: 2, to: 3 }
         ];
 
         const setDeviceAtProgress = (progress) => {
@@ -1085,10 +1085,10 @@ document.addEventListener("DOMContentLoaded", () => {
             setDeviceAtProgress(p);
 
             let activeIdx = -1;
-            if (p < 0.14) activeIdx = 0;
-            else if (p >= 0.22 && p < 0.46) activeIdx = 1;
-            else if (p >= 0.54 && p < 0.79) activeIdx = 2;
-            else if (p >= 0.87) activeIdx = 3;
+            if (p < 0.12) activeIdx = 0;
+            else if (p >= 0.28 && p < 0.43) activeIdx = 1;
+            else if (p >= 0.59 && p < 0.76) activeIdx = 2;
+            else if (p >= 0.92) activeIdx = 3;
             setActiveStoryCategory(activeIdx);
           },
           onLeaveBack: () => {
