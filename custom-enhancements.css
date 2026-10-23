@@ -2368,7 +2368,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 20;
+  z-index: 3;
   pointer-events: none;
   display: flex;
   justify-content: center;
@@ -2386,9 +2386,9 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 .aqua-story__product-traveler {
   position: absolute;
   left: 50%;
-  top: calc(50vh - 240px);
+  top: 50%;
   width: clamp(320px, 28vw, 440px);
-  transform: translate3d(-50%, 0, 0);
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2430,16 +2430,6 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   z-index: 1;
 }
 
-/* Normalize Blue Model scale to match Yellow Model proportions */
-.aqua-story__product-img[data-story-img="2"],
-.aqua-story__product-img[data-story-img="4"] {
-  transform: scale(0.93);
-}
-
-.aqua-story__row[data-story-row="2"] .aqua-story__square-img,
-.aqua-story__row[data-story-row="4"] .aqua-story__square-img {
-  transform: scale(0.91);
-}
 
 .aqua-story__product-glow {
   display: none !important;

@@ -816,7 +816,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentCategoryIdx === index) return;
       currentCategoryIdx = index;
 
-      // Automatically play video for active category row soon after device sits in place, and fade out inactive ones to show static images
+      // Automatically play video for active category row, and smoothly fade out inactive ones with overwrite auto
       storyRows.forEach((r, i) => {
         const video = r.querySelector(".aqua-story__row-bg-video");
         if (video) {
@@ -824,12 +824,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (video.getAttribute("data-src") && !video.src) {
               video.src = video.getAttribute("data-src");
             }
-            gsap.to(video, { opacity: 1, duration: 0.6, delay: 0.15 });
+            gsap.to(video, { opacity: 1, duration: 0.7, overwrite: "auto" });
             if (video.paused) {
               video.play().catch(() => {});
             }
           } else {
-            gsap.to(video, { opacity: 0, duration: 0.4 });
+            gsap.to(video, { opacity: 0, duration: 0.5, overwrite: "auto" });
             if (!video.paused) {
               video.pause();
             }
@@ -858,17 +858,56 @@ document.addEventListener("DOMContentLoaded", () => {
         const img3 = productFrame ? productFrame.querySelector('[data-story-img="3"]') : null;
         const img4 = productFrame ? productFrame.querySelector('[data-story-img="4"]') : null;
 
-        // Row 1's right-side slot target position (percentage of viewport)
-        // The device needs to land at ~right 25% of viewport, vertically centered
-        const row1TargetXPercent = 22; // positive = right of center (percentage)
-        const row1TargetYOffset = -10; // slight upward shift in vh
+        // Dynamically compute the exact horizontal center of the target slot element
+        // so the device lands directly in the designated column and never overlaps text.
+        const getSlotX = (side) => {
+          if (side === "right") {
+            const row1 = document.querySelector('[data-story-row="1"]');
+            const slot = row1 ? row1.querySelector('.aqua-story__slot') : null;
+            if (slot) {
+              const slotRect = slot.getBoundingClientRect();
+              const screenCenterX = window.innerWidth / 2;
+              return (slotRect.left + slotRect.width / 2) - screenCenterX;
+            }
+            return window.innerWidth * 0.25;
+          } else {
+            const row2 = document.querySelector('[data-story-row="2"]');
+            const slot = row2 ? row2.querySelector('.aqua-story__slot') : null;
+            if (slot) {
+              const slotRect = slot.getBoundingClientRect();
+              const screenCenterX = window.innerWidth / 2;
+              return (slotRect.left + slotRect.width / 2) - screenCenterX;
+            }
+            return -(window.innerWidth * 0.25);
+          }
+        };
 
         // Initialize bridge as hidden
-        if (bridgeEl) gsap.set(bridgeEl, { autoAlpha: 0 });
+        if (bridgeEl) {
+          gsap.set(bridgeEl, { autoAlpha: 0 });
+          if (bridgeCard) {
+            gsap.set(bridgeCard, {
+              xPercent: -50,
+              yPercent: -50,
+              x: 0,
+              y: 0,
+              scale: 1.4,
+              opacity: 0
+            });
+          }
+        }
 
         // Initialize product stage hidden (will be revealed after bridge handoff)
+        // Row 1 = device seated at lower-right floor ground (user marked pillar base)
         gsap.set(productStage, { autoAlpha: 0 });
-        gsap.set(productTraveler, { x: 320, y: 0, scale: 1.0, opacity: 1 });
+        gsap.set(productTraveler, {
+          xPercent: -50,
+          yPercent: -50,
+          x: () => 0.36 * window.innerWidth,
+          y: () => 0.23 * window.innerHeight,
+          scale: 0.82,
+          opacity: 1
+        });
         if (productFrame) gsap.set(productFrame, { rotateY: 0 });
         if (img1) gsap.set(img1, { opacity: 1 });
         if (img2) gsap.set(img2, { opacity: 0 });
@@ -884,33 +923,33 @@ document.addEventListener("DOMContentLoaded", () => {
             trigger: storySection,
             start: "top 85%",
             end: "top 15%",
-            scrub: 0.6,
+            scrub: 0.8,
             onUpdate: (self) => {
               const p = self.progress;
 
               // Show bridge element
               gsap.set(bridgeEl, { autoAlpha: 1 });
 
-              // Animate bridge card from center of viewport to Row 1 slot position
-              // Start: centered (translate(-50%, -50%)) with larger scale
-              // End: offset right with normal scale
+              // Animate bridge card from center of viewport (0, 0) to Row 1 floor corner position
               const startScale = 1.4;
-              const endScale = 1.0;
+              const endScale = 0.82;
               const currentScale = startScale + (endScale - startScale) * p;
 
-              // X movement: center (0%) → right side (~22vw from center)
-              const targetX = row1TargetXPercent * (window.innerWidth / 100);
+              // X movement: center (0) → right side ground slot
+              const targetX = window.innerWidth * 0.36;
               const currentX = targetX * p;
 
-              // Y movement: center → slight upward
-              const targetY = row1TargetYOffset * (window.innerHeight / 100);
+              // Y movement: center (0) → floor level
+              const targetY = window.innerHeight * 0.23;
               const currentY = targetY * p;
 
               gsap.set(bridgeCard, {
+                xPercent: -50,
+                yPercent: -50,
                 x: currentX,
                 y: currentY,
                 scale: currentScale,
-                opacity: Math.min(1, p * 3) // fade in quickly in first 33%
+                opacity: Math.min(1, p * 3)
               });
 
               // Fade out hero canvas simultaneously
@@ -940,18 +979,25 @@ document.addEventListener("DOMContentLoaded", () => {
               }
             },
             onLeaveBack: () => {
-              // Fully scrolled back above Section 2 — reset everything
               bridgeComplete = false;
               gsap.set(bridgeEl, { autoAlpha: 0 });
               gsap.set(productStage, { autoAlpha: 0 });
-              if (bridgeCard) gsap.set(bridgeCard, { x: 0, y: 0, scale: 1.4, opacity: 0 });
+              if (bridgeCard) {
+                gsap.set(bridgeCard, {
+                  xPercent: -50,
+                  yPercent: -50,
+                  x: 0,
+                  y: 0,
+                  scale: 1.4,
+                  opacity: 0
+                });
+              }
               setActiveStoryCategory(-1);
               if (heroCanvasEl) {
                 gsap.set(heroCanvasEl, { opacity: 1, autoAlpha: 1, visibility: "visible" });
               }
             },
             onLeave: () => {
-              // Fully past bridge zone — ensure clean state
               bridgeComplete = true;
               gsap.set(bridgeEl, { autoAlpha: 0 });
               gsap.set(productStage, { autoAlpha: 1 });
@@ -964,8 +1010,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // ---------------------------------------------------------------
         // PHASE 2: SECTION 2 INTERNAL ROW-TO-ROW TRAVEL
-        // Pin productStage within Section 2 and animate productTraveler
-        // horizontally between rows with 3D banking tilt and model swaps.
         // ---------------------------------------------------------------
 
         // Pin the product stage for the full Section 2 scroll
@@ -984,72 +1028,82 @@ document.addEventListener("DOMContentLoaded", () => {
             trigger: storySection,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.9,
+            scrub: 0.7,
+            snap: {
+              snapTo: [0, 0.333, 0.667, 1],
+              duration: { min: 0.35, max: 0.6 },
+              delay: 0.1,
+              ease: "power1.inOut"
+            },
             invalidateOnRefresh: true,
             onUpdate: (self) => {
               const p = self.progress;
 
-              // Symmetric Category & Video sync (works identically forwards & backwards)
-              // Only activate categories once device is in the resting zone for each row
-              let activeIdx = -1;
-              if (p < 0.05) {
-                activeIdx = 0; // Row 1 — already seated from bridge handoff
-              } else if (p >= 0.20 && p < 0.25) {
-                // Traveling between Row 1 → Row 2
-                activeIdx = -1;
-              } else if (p >= 0.25 && p < 0.45) {
-                activeIdx = 1; // Row 2 — HOME CARE
-              } else if (p >= 0.45 && p < 0.52) {
-                // Traveling between Row 2 → Row 3
-                activeIdx = -1;
-              } else if (p >= 0.52 && p < 0.72) {
-                activeIdx = 2; // Row 3 — GIG WORKERS
-              } else if (p >= 0.72 && p < 0.78) {
-                // Traveling between Row 3 → Row 4
-                activeIdx = -1;
-              } else if (p >= 0.78) {
-                activeIdx = 3; // Row 4 — CORPORATE CARE
+              // Fluid Category & Video sync:
+              let activeIdx = 0;
+              if (p >= 0.83) {
+                activeIdx = 3; // Row 4 (Corporate Care)
+              } else if (p >= 0.50) {
+                activeIdx = 2; // Row 3 (Gig Workers / Solar Care)
+              } else if (p >= 0.17) {
+                activeIdx = 1; // Row 2 (Home Care)
               } else {
-                activeIdx = 0; // Default to Row 1 while in top zone
+                activeIdx = 0; // Row 1 (Autocare)
               }
               setActiveStoryCategory(activeIdx);
             },
             onLeaveBack: () => {
-              // Scrolled back to top of Section 2 — bridge handles the transition
               setActiveStoryCategory(-1);
             }
           }
         });
 
-        // Timeline durations (total ~6.0 units)
-        // Row 1 rest: 0 → 0.8
-        // Travel 1→2: 0.8 → 2.0
-        // Row 2 rest: 2.0 → 2.8
-        // Travel 2→3: 2.8 → 4.0
-        // Row 3 rest: 4.0 → 4.8
-        // Travel 3→4: 4.8 → 6.0
+        // Timeline durations (total = 10.0 units)
+        // Row 1 dwell:    0.0 → 1.5   (device 100% STOPPED in AUTOCARE lower-right floor corner)
+        // Travel 1→2:     1.5 → 2.1   (device glides smoothly to lower-left patio floor)
+        // Row 2 dwell:    2.1 → 4.8   (device 100% STOPPED in HOME CARE lower-left patio corner - Image 1)
+        // Travel 2→3:     4.8 → 5.4   (device glides smoothly to lower-right floor / steps)
+        // Row 3 dwell:    5.4 → 8.1   (device 100% STOPPED in SOLAR CARE lower-right ground - Image 2)
+        // Travel 3→4:     8.1 → 8.7   (device glides smoothly to lower-left pavement)
+        // Row 4 dwell:    8.7 → 10.0  (device 100% STOPPED in CORPORATE CARE lower-left pavement)
 
-        // --- ROW 1 → ROW 2 (AUTOCARE → HOME CARE): Travel RIGHT → LEFT ---
         storyTL
-          .to(productTraveler, { x: -360, duration: 1.2, ease: "power1.inOut" }, 0.8)
-          .to(productFrame, { rotateY: -15, duration: 0.6, ease: "power1.in" }, 0.8)
-          .to(productFrame, { rotateY: 0, duration: 0.6, ease: "power1.out" }, 1.4)
-          .to(img1, { opacity: 0, duration: 0.5, ease: "power1.inOut" }, 1.1)
-          .to(img2, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 1.1)
+          .set(productTraveler, {
+            x: () => 0.36 * window.innerWidth,
+            y: () => 0.23 * window.innerHeight,
+            scale: 0.82,
+            force3D: true
+          }, 0)
 
-        // --- ROW 2 → ROW 3 (HOME CARE → GIG WORKERS): Travel LEFT → RIGHT ---
-          .to(productTraveler, { x: 320, duration: 1.2, ease: "power1.inOut" }, 2.8)
-          .to(productFrame, { rotateY: 15, duration: 0.6, ease: "power1.in" }, 2.8)
-          .to(productFrame, { rotateY: 0, duration: 0.6, ease: "power1.out" }, 3.4)
-          .to(img2, { opacity: 0, duration: 0.5, ease: "power1.inOut" }, 3.1)
-          .to(img3, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 3.1)
+        // --- ROW 1 → ROW 2: device LOWER-RIGHT FLOOR → LOWER-LEFT PATIO GROUND ---
+          .to(productTraveler, {
+            x: () => -0.36 * window.innerWidth,
+            y: () => 0.24 * window.innerHeight,
+            scale: 0.85,
+            duration: 0.6,
+            ease: "sine.inOut"
+          }, 1.5)
 
-        // --- ROW 3 → ROW 4 (GIG WORKERS → CORPORATE CARE): Travel RIGHT → LEFT ---
-          .to(productTraveler, { x: -360, duration: 1.2, ease: "power1.inOut" }, 4.8)
-          .to(productFrame, { rotateY: -15, duration: 0.6, ease: "power1.in" }, 4.8)
-          .to(productFrame, { rotateY: 0, duration: 0.6, ease: "power1.out" }, 5.4)
-          .to(img3, { opacity: 0, duration: 0.5, ease: "power1.inOut" }, 5.1)
-          .to(img4, { opacity: 1, duration: 0.5, ease: "power1.inOut" }, 5.1);
+        // --- ROW 2 → ROW 3: device LOWER-LEFT → LOWER-RIGHT GROUND / STEPS ---
+          .to(productTraveler, {
+            x: () => 0.36 * window.innerWidth,
+            y: () => 0.23 * window.innerHeight,
+            scale: 0.82,
+            duration: 0.6,
+            ease: "sine.inOut"
+          }, 4.8)
+
+        // --- ROW 3 → ROW 4: device LOWER-RIGHT → LOWER-LEFT PAVEMENT ---
+          .to(productTraveler, {
+            x: () => -0.39 * window.innerWidth,
+            y: () => 0.26 * window.innerHeight,
+            scale: 0.80,
+            duration: 0.6,
+            ease: "sine.inOut"
+          }, 8.1)
+
+          // Pad duration to exactly 10.0 so Row 4 has full rest duration
+          .set({}, {}, 10.0);
       });
     }
 
