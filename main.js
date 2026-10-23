@@ -1022,98 +1022,79 @@ document.addEventListener("DOMContentLoaded", () => {
           invalidateOnRefresh: true
         });
 
-        // Row-to-Row travel timeline (starts with device already settled in Row 1 position)
-        const storyTL = gsap.timeline({
-          scrollTrigger: {
-            trigger: storySection,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.75,
-            invalidateOnRefresh: true,
-            onUpdate: (self) => {
-              const p = self.progress;
+        // Use fixed positions during care phases and interpolate only during travel.
+        // This makes Home and Solar true holds, independent of timeline easing.
+        const deviceStops = [
+          { x: 0.36, y: 0.23, scale: 0.82 },
+          { x: -0.36, y: 0.24, scale: 0.85 },
+          { x: 0.36, y: 0.23, scale: 0.82 },
+          { x: -0.39, y: 0.26, scale: 0.80 }
+        ];
+        const deviceTravel = [
+          { start: 0.14, end: 0.22, from: 0, to: 1 },
+          { start: 0.46, end: 0.54, from: 1, to: 2 },
+          { start: 0.79, end: 0.87, from: 2, to: 3 }
+        ];
 
-              // Complete Animation Flow — Exact 5-Phase Video & Travel Synchronization:
-              // During transition travel: video transitions out -> static image is visible.
-              // Once device settles at destination: section's background video begins playing.
-              // Device remains stationary while user explores section.
-              let activeIdx = -1;
-              if (p < 0.15) {
-                // PHASE 2 (Car & Bike Care): Settled at lower-right -> video plays, device stationary
-                activeIdx = 0;
-              } else if (p >= 0.15 && p < 0.21) {
-                // TRANSITION to Home Care: Video out, static 2.jpg visible, device traveling toward bottom-left
-                activeIdx = -1;
-              } else if (p >= 0.21 && p < 0.48) {
-                // PHASE 3 (Home & Upholstery Care): Settled at bottom-left -> video plays, device stationary
-                activeIdx = 1;
-              } else if (p >= 0.48 && p < 0.54) {
-                // TRANSITION to Solar Care: Video out, static 3.jpg visible, device traveling toward bottom-right
-                activeIdx = -1;
-              } else if (p >= 0.54 && p < 0.81) {
-                // PHASE 4 (Solar Cleaning): Settled at bottom-right -> video plays, device stationary
-                activeIdx = 2;
-              } else if (p >= 0.81 && p < 0.87) {
-                // TRANSITION to Corporate Care: Video out, static 4.jpg visible, device traveling toward bottom-left
-                activeIdx = -1;
-              } else if (p >= 0.87) {
-                // PHASE 5 (Corporate & Facility Care): Settled at bottom-left -> video plays, device stationary
-                activeIdx = 3;
-              }
-              setActiveStoryCategory(activeIdx);
-            },
-            onLeaveBack: () => {
-              setActiveStoryCategory(-1);
-            }
+        const setDeviceAtProgress = (progress) => {
+          const travel = deviceTravel.find((phase) => progress >= phase.start && progress < phase.end);
+          let fromIndex;
+          let toIndex;
+          let t = 0;
+
+          if (travel) {
+            fromIndex = travel.from;
+            toIndex = travel.to;
+            const linearProgress = (progress - travel.start) / (travel.end - travel.start);
+            t = 0.5 - Math.cos(Math.PI * linearProgress) / 2;
+          } else if (progress >= 0.87) {
+            fromIndex = toIndex = 3;
+          } else if (progress >= 0.54) {
+            fromIndex = toIndex = 2;
+          } else if (progress >= 0.22) {
+            fromIndex = toIndex = 1;
+          } else {
+            fromIndex = toIndex = 0;
+          }
+
+          const from = deviceStops[fromIndex];
+          const to = deviceStops[toIndex];
+          const mix = (a, b) => a + (b - a) * t;
+          gsap.set(productTraveler, {
+            x: mix(from.x, to.x) * window.innerWidth,
+            y: mix(from.y, to.y) * window.innerHeight,
+            scale: mix(from.scale, to.scale),
+            force3D: true
+          });
+        };
+
+        ScrollTrigger.create({
+          trigger: storySection,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+          snap: {
+            snapTo: [0, 0.3333, 0.6667, 1],
+            duration: { min: 0.35, max: 0.65 },
+            delay: 0.12,
+            ease: "power1.inOut"
+          },
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const p = self.progress;
+            setDeviceAtProgress(p);
+
+            let activeIdx = -1;
+            if (p < 0.14) activeIdx = 0;
+            else if (p >= 0.22 && p < 0.46) activeIdx = 1;
+            else if (p >= 0.54 && p < 0.79) activeIdx = 2;
+            else if (p >= 0.87) activeIdx = 3;
+            setActiveStoryCategory(activeIdx);
+          },
+          onLeaveBack: () => {
+            setActiveStoryCategory(-1);
           }
         });
-
-        // Timeline durations (total = 10.0 units)
-        // Row 1 dwell:    0.0 → 1.5   (device 100% STOPPED in AUTOCARE lower-right floor corner)
-        // Travel 1→2:     1.5 → 2.1   (device glides smoothly to lower-left patio floor)
-        // Row 2 dwell:    2.1 → 4.8   (device 100% STOPPED in HOME CARE lower-left patio corner - Image 1)
-        // Travel 2→3:     4.8 → 5.4   (device glides smoothly to lower-right floor / steps)
-        // Row 3 dwell:    5.4 → 8.1   (device 100% STOPPED in SOLAR CARE lower-right ground - Image 2)
-        // Travel 3→4:     8.1 → 8.7   (device glides smoothly to lower-left pavement)
-        // Row 4 dwell:    8.7 → 10.0  (device 100% STOPPED in CORPORATE CARE lower-left pavement)
-
-        storyTL
-          .set(productTraveler, {
-            x: () => 0.36 * window.innerWidth,
-            y: () => 0.23 * window.innerHeight,
-            scale: 0.82,
-            force3D: true
-          }, 0)
-
-        // --- ROW 1 → ROW 2: device LOWER-RIGHT FLOOR → LOWER-LEFT PATIO GROUND ---
-          .to(productTraveler, {
-            x: () => -0.36 * window.innerWidth,
-            y: () => 0.24 * window.innerHeight,
-            scale: 0.85,
-            duration: 0.6,
-            ease: "sine.inOut"
-          }, 1.5)
-
-        // --- ROW 2 → ROW 3: device LOWER-LEFT → LOWER-RIGHT GROUND / STEPS ---
-          .to(productTraveler, {
-            x: () => 0.36 * window.innerWidth,
-            y: () => 0.23 * window.innerHeight,
-            scale: 0.82,
-            duration: 0.6,
-            ease: "sine.inOut"
-          }, 4.8)
-
-        // --- ROW 3 → ROW 4: device LOWER-RIGHT → LOWER-LEFT PAVEMENT ---
-          .to(productTraveler, {
-            x: () => -0.39 * window.innerWidth,
-            y: () => 0.26 * window.innerHeight,
-            scale: 0.80,
-            duration: 0.6,
-            ease: "sine.inOut"
-          }, 8.1)
-
-          // Pad duration to exactly 10.0 so Row 4 has full rest duration
-          .set({}, {}, 10.0);
       });
     }
 
