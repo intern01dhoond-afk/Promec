@@ -4,7 +4,11 @@ const path = require('path');
 const copyDir = (src, dest) => {
   if (!fs.existsSync(src)) return;
   if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
-  fs.cpSync(src, dest, { recursive: true, force: true });
+  fs.cpSync(src, dest, {
+    recursive: true,
+    force: true,
+    filter: (source) => !source.includes('pressure_washer_frames') && !source.includes('originals_backup')
+  });
   console.log(`[copy-static] Copied folder ${src} -> ${dest}`);
 };
 

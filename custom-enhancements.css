@@ -1,4 +1,219 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+/* ==========================================================================
+   NEUE MONTREAL & PP NEUE MONTREAL WEBFONT DECLARATIONS
+   ========================================================================== */
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: local('Neue Montreal Thin'), local('PP Neue Montreal Thin'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-thin.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-thin.woff') format('woff');
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Neue Montreal Book'), local('PP Neue Montreal Book'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-book.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-book.woff') format('woff');
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Neue Montreal'), local('PP Neue Montreal'), local('Neue Montreal Book'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-book.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-book.woff') format('woff');
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Neue Montreal Italic'), local('PP Neue Montreal Italic'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-italic.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Neue Montreal Medium'), local('PP Neue Montreal Medium'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-medium.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Neue Montreal Medium'), local('PP Neue Montreal Medium'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-medium.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Neue Montreal SemiBold Italic'), local('PP Neue Montreal SemiBold Italic'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-semibolditalic.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-semibolditalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Neue Montreal Bold'), local('PP Neue Montreal Bold'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-bold.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local('Neue Montreal Bold'), local('PP Neue Montreal Bold'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-bold.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Neue Montreal';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('Neue Montreal Bold'), local('PP Neue Montreal Bold'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-bold.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-bold.woff') format('woff');
+}
+
+/* PP Neue Montreal Aliases */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: local('PP Neue Montreal Thin'), local('Neue Montreal Thin'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-thin.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-thin.woff') format('woff');
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('PP Neue Montreal Book'), local('Neue Montreal Book'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-book.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-book.woff') format('woff');
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('PP Neue Montreal'), local('Neue Montreal'), local('PP Neue Montreal Book'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-book.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-book.woff') format('woff');
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('PP Neue Montreal Italic'), local('Neue Montreal Italic'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-italic.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('PP Neue Montreal Medium'), local('Neue Montreal Medium'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-medium.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('PP Neue Montreal Medium'), local('Neue Montreal Medium'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-medium.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: local('PP Neue Montreal SemiBold Italic'), local('Neue Montreal SemiBold Italic'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-semibolditalic.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-semibolditalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('PP Neue Montreal Bold'), local('Neue Montreal Bold'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-bold.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local('PP Neue Montreal Bold'), local('Neue Montreal Bold'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-bold.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: local('PP Neue Montreal Bold'), local('Neue Montreal Bold'),
+       url('vendor/fonts/neue-montreal/ppneuemontreal-bold.woff') format('woff'),
+       url('https://fonts.cdnfonts.com/s/100431/ppneuemontreal-bold.woff') format('woff');
+}
+
+/* ==========================================================================
+   MICROGRAMMA BOLD EXTENDED WEBFONT DECLARATION (FOOTER "PROMEC" ONLY)
+   ========================================================================== */
+@font-face {
+  font-family: 'Microgramma Bold Extended';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Microgramma Bold Extended'),
+       local('MicrogrammaBoldExtended'),
+       local('Microgramma-BoldExtended'),
+       local('Microgramma W01 Bold Extended'),
+       url('vendor/fonts/microgramma/microgramma-bold-extended.woff2') format('woff2'),
+       url('vendor/fonts/microgramma/microgramma-bold-extended.woff') format('woff'),
+       url('vendor/fonts/microgramma/microgramma-bold-extended.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Microgramma';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Microgramma Bold Extended'),
+       local('MicrogrammaBoldExtended'),
+       local('Microgramma-BoldExtended'),
+       local('Microgramma W01 Bold Extended'),
+       url('vendor/fonts/microgramma/microgramma-bold-extended.woff2') format('woff2'),
+       url('vendor/fonts/microgramma/microgramma-bold-extended.woff') format('woff'),
+       url('vendor/fonts/microgramma/microgramma-bold-extended.ttf') format('truetype');
+}
 
 /* ==========================================================================
    RADIAN EXR — CUSTOM ENHANCEMENTS & INTERACTIVE STYLES
@@ -12,11 +227,12 @@
   --color-radian-light: #f5f3ef;
   --ease-uncommon: cubic-bezier(0.625, 0.05, 0, 1);
 
-  /* Google Font: Geist */
-  --font-geist: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --_fonts---fonts--heading: "Geist", sans-serif !important;
-  --_fonts---fonts--paragraph: "Geist", sans-serif !important;
-  --_fonts---fonts--eyebrow: "Geist", sans-serif !important;
+  /* Font System: Neue Montreal */
+  --font-neue-montreal: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-neue-montreal: var(--font-neue-montreal);
+  --_fonts---fonts--heading: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  --_fonts---fonts--paragraph: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  --_fonts---fonts--eyebrow: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
 }
 
 /* Ensure smooth font rendering & selection */
@@ -39,7 +255,7 @@ body.is-locked {
 }
 
 /* ==========================================================================
-   GLOBAL TYPOGRAPHY — GOOGLE FONT: GEIST
+   GLOBAL TYPOGRAPHY — NEUE MONTREAL
    ========================================================================== */
 html,
 body,
@@ -65,7 +281,7 @@ p, span, a, li, ul, ol, div, label,
 .aqua-story__btn-bw,
 .aqua-footer__brand,
 .aqua-footer__copy {
-  font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
 [class^="w-icon-"], [class*=" w-icon-"] {
@@ -440,7 +656,7 @@ div.nav.theme-light {
 }
 
 .nav__custom-item {
-  font-family: var(--_fonts---fonts--heading, ""Geist", Arial, sans-serif");
+  font-family: var(--_fonts---fonts--heading, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif");
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -486,7 +702,7 @@ div.nav.theme-light {
   color: #0b0d11 !important;
   border: 1px solid #ffffff !important;
   border-radius: 6px !important; /* Crisp rounded rectangle as in reference */
-  font-family: var(--_fonts---fonts--heading, ""Geist", Arial, sans-serif");
+  font-family: var(--_fonts---fonts--heading, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif");
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.05em;
@@ -560,7 +776,7 @@ div.nav.theme-light {
   }
   .nav__content .nav-link__p {
     color: #ffffff !important;
-    font-family: var(--_fonts---fonts--heading, ""Geist", Arial, sans-serif") !important;
+    font-family: var(--_fonts---fonts--heading, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
     font-size: 26px !important;
     font-weight: 600 !important;
   }
@@ -2071,7 +2287,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--_fonts---fonts--eyebrow, ""Geist", Arial, sans-serif") !important;
+  font-family: var(--_fonts---fonts--eyebrow, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
   font-size: 0.75rem !important; /* 12px */
   font-weight: 500 !important;
   line-height: 1 !important;
@@ -2089,7 +2305,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 .aqua-story .heading-l,
 .theme-light .aqua-story .heading-l,
 .aqua-story__title {
-  font-family: var(--_fonts---fonts--heading, ""Geist", Arial, sans-serif") !important;
+  font-family: var(--_fonts---fonts--heading, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
   font-size: clamp(2.4rem, 3.8vw, 3.25rem) !important;
   font-weight: 500 !important;
   line-height: 1.05 !important;
@@ -2101,7 +2317,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 .aqua-story .paragraph-m,
 .theme-light .aqua-story .paragraph-m,
 .aqua-story__desc {
-  font-family: var(--_fonts---fonts--paragraph, ""Geist", Arial, sans-serif") !important;
+  font-family: var(--_fonts---fonts--paragraph, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
   font-size: 1.125rem !important; /* 18px */
   line-height: 1.4 !important;
   letter-spacing: -0.01em !important;
@@ -2118,7 +2334,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-story__chip {
-  font-family: var(--_fonts---fonts--paragraph, ""Geist", Arial, sans-serif") !important;
+  font-family: var(--_fonts---fonts--paragraph, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
   font-size: 0.8125rem !important; /* 13px */
   font-weight: 500 !important;
   letter-spacing: -0.01em !important;
@@ -2140,7 +2356,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: var(--_fonts---fonts--paragraph, ""Geist", Arial, sans-serif") !important;
+  font-family: var(--_fonts---fonts--paragraph, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
   font-size: 1.0625rem !important; /* 17px */
   line-height: 1.4 !important;
   letter-spacing: -0.01em !important;
@@ -2195,14 +2411,14 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--_fonts---fonts--eyebrow, ""Geist", Arial, sans-serif") !important;
+  font-family: var(--_fonts---fonts--eyebrow, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
   font-size: 12px;
   font-weight: 500;
   color: var(--color-radian-yellow, #fdeb07);
 }
 
 .aqua-story__journey-label {
-  font-family: var(--_fonts---fonts--paragraph, ""Geist", Arial, sans-serif") !important;
+  font-family: var(--_fonts---fonts--paragraph, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -2210,7 +2426,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-story__journey-sub {
-  font-family: var(--_fonts---fonts--eyebrow, ""Geist", Arial, sans-serif") !important;
+  font-family: var(--_fonts---fonts--eyebrow, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
   font-size: 11px;
   letter-spacing: -0.01em;
   color: rgba(245, 243, 239, 0.6);
@@ -2235,7 +2451,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   justify-content: center;
   background: #ffffff !important;
   color: #000000 !important;
-  font-family: var(--_fonts---fonts--paragraph, ""Geist", Arial, sans-serif") !important;
+  font-family: var(--_fonts---fonts--paragraph, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif") !important;
   font-weight: 700 !important;
   font-size: 14px !important;
   letter-spacing: 0.04em !important;
@@ -2497,7 +2713,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-footer__brand {
-  font-family: var(--_fonts---fonts--heading, ""Geist", Arial, sans-serif");
+  font-family: var(--_fonts---fonts--heading, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif");
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -2506,7 +2722,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-footer__copy {
-  font-family: var(--_fonts---fonts--paragraph, ""Geist", Arial, sans-serif");
+  font-family: var(--_fonts---fonts--paragraph, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif");
   font-size: 13px;
   color: rgba(245, 243, 239, 0.45);
   margin: 0;
@@ -2539,7 +2755,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-showcase__heading {
-  font-family: var(--_fonts---fonts--heading, "Geist", Arial, sans-serif);
+  font-family: var(--_fonts---fonts--heading, "Neue Montreal", "PP Neue Montreal", Arial, sans-serif);
   font-size: clamp(24px, 3.1vw, 36px);
   font-weight: 500;
   line-height: 1.44;
@@ -2563,7 +2779,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   background: #0f172a;
   color: #ffffff !important;
   border-radius: 8px;
-  font-family: var(--_fonts---fonts--heading, ""Geist", Arial, sans-serif");
+  font-family: var(--_fonts---fonts--heading, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif");
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -2659,7 +2875,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-showcase__slide-title {
-  font-family: var(--_fonts---fonts--heading, ""Geist", Arial, sans-serif");
+  font-family: var(--_fonts---fonts--heading, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif");
   font-size: clamp(22px, 2.7vw, 34px);
   font-weight: 700;
   color: #ffffff;
@@ -2669,7 +2885,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-showcase__slide-desc {
-  font-family: var(--_fonts---fonts--paragraph, ""Geist", Arial, sans-serif");
+  font-family: var(--_fonts---fonts--paragraph, ""Neue Montreal", "PP Neue Montreal", Arial, sans-serif");
   font-size: clamp(14px, 1.25vw, 17px);
   color: rgba(255, 255, 255, 0.78);
   margin: 0;
@@ -2688,7 +2904,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-showcase__counter {
-  font-family: var(--_fonts---fonts--heading, ""Geist", monospace, sans-serif");
+  font-family: var(--_fonts---fonts--heading, ""Neue Montreal", "PP Neue Montreal", monospace, sans-serif");
   font-size: 13px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.78);
@@ -2903,7 +3119,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-engineering__heading {
-  font-family: var(--_fonts---fonts--heading, "Geist", Arial, sans-serif);
+  font-family: var(--_fonts---fonts--heading, "Neue Montreal", "PP Neue Montreal", Arial, sans-serif);
   font-size: clamp(30px, 3.8vw, 48px);
   font-weight: 700;
   line-height: 1.14;
@@ -2919,7 +3135,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-engineering__text-col p {
-  font-family: var(--_fonts---fonts--paragraph, "Geist", Arial, sans-serif);
+  font-family: var(--_fonts---fonts--paragraph, "Neue Montreal", "PP Neue Montreal", Arial, sans-serif);
   font-size: clamp(14px, 1.1vw, 15px);
   line-height: 1.65;
   color: #475467 !important;
@@ -2971,7 +3187,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   color: #0f172a;
   padding: 48px 48px 48px;
   overflow: hidden;
-  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .aqua-testimonials__container {
@@ -2988,7 +3204,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-testimonials__heading {
-  font-family: 'Geist', sans-serif;
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif;
   font-size: 52px;
   font-weight: 700;
   line-height: 1.08;
@@ -2998,7 +3214,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-testimonials__desc {
-  font-family: 'Geist', sans-serif;
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif;
   font-size: 18px;
   line-height: 1.6;
   color: #475467;
@@ -3168,191 +3384,198 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
    21. SECTION 6: CTA PRODUCT BANNER (.aqua-cta-banner)
    ========================================================================= */
 .aqua-cta-banner {
-  position: relative;
-  background-color: #080a0c;
-  color: #ffffff;
-  padding: 100px 24px 0;
-  overflow: hidden;
-  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  text-align: center;
+  position: relative !important;
+  width: 100% !important;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 58%, #050608 58%, #050608 100%) !important;
+  padding: 80px 32px 64px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  z-index: 10 !important;
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
-.aqua-cta-banner__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 2;
+.aqua-cta-card {
+  max-width: 1220px !important;
+  margin: 0 auto !important;
+  background-color: #ebebeb !important;
+  border-radius: 24px !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 76px 64px 80px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05) !important;
 }
 
-.aqua-cta-banner__header {
-  max-width: 680px;
-  margin: 0 auto 56px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.aqua-cta-card__content {
+  flex: 1 1 58% !important;
+  max-width: 580px !important;
+  position: relative !important;
+  z-index: 2 !important;
+  text-align: left !important;
 }
 
-.aqua-cta-banner__heading {
-  font-family: 'Geist', sans-serif;
-  font-size: 56px;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  color: #ffffff;
-  margin-bottom: 20px;
+.aqua-cta-card__heading {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: clamp(34px, 3.8vw, 48px) !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+  color: #000000 !important;
+  margin: 0 0 18px 0 !important;
 }
 
-.aqua-cta-banner__desc {
-  font-family: 'Geist', sans-serif;
-  font-size: 18px;
-  line-height: 1.6;
-  color: #94a3b8;
-  font-weight: 400;
-  margin-bottom: 36px;
-  max-width: 580px;
+.aqua-cta-card__desc {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+  color: #64748b !important;
+  margin: 0 0 32px 0 !important;
+  max-width: 480px !important;
+  font-weight: 400 !important;
 }
 
-.aqua-cta-banner__actions {
-  display: flex;
-  justify-content: center;
+.aqua-cta-card__actions {
+  display: flex !important;
+  justify-content: flex-start !important;
 }
 
-.aqua-cta-banner__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 28px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: transparent;
-  color: #ffffff;
-  font-family: 'Geist', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.aqua-cta-card__btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 13px 26px !important;
+  background-color: #09090b !important;
+  color: #ffffff !important;
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  border-radius: 6px !important;
+  transition: all 0.25s ease !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
 }
 
-.aqua-cta-banner__btn:hover {
-  background-color: #ffffff;
-  color: #080a0c;
-  border-color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
+.aqua-cta-card__btn:hover {
+  background-color: #27272a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
 }
 
-.aqua-cta-banner__hero {
-  position: relative;
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
+.aqua-cta-card__visual {
+  position: absolute !important;
+  right: 52px !important;
+  bottom: 0 !important;
+  height: calc(100% + 54px) !important;
+  max-height: 480px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
 }
 
-.aqua-cta-banner__product-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.aqua-cta-card__img {
+  height: 100% !important;
+  width: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+  object-position: bottom right !important;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.08)) !important;
 }
 
-.aqua-cta-banner:hover .aqua-cta-banner__product-img {
-  transform: scale(1.015);
-}
-
-/* Desktop View: Use final-cta-section.png as Full Background Image */
-@media (min-width: 769px) {
-  .aqua-cta-banner {
-    padding: 80px 24px 0;
-    min-height: clamp(480px, 59vw, 850px);
-    background-image: url('assets/final-cta-section.png');
-    background-size: cover;
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    margin-bottom: 0 !important;
+@media (max-width: 1024px) {
+  .aqua-cta-card {
+    padding: 60px 48px 64px !important;
   }
-
-  .aqua-cta-banner__hero {
-    display: none !important;
-  }
-}
-
-/* Responsive Breakpoints */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .aqua-cta-banner {
-    min-height: 720px;
-    padding-top: 80px;
-  }
-  .aqua-cta-banner__heading {
-    font-size: 44px;
-  }
-  .aqua-cta-banner__desc {
-    font-size: 16px;
+  .aqua-cta-card__visual {
+    right: 28px !important;
   }
 }
 
 @media (max-width: 768px) {
   .aqua-cta-banner {
-    padding-top: 60px;
-    background-image: none;
+    padding: 50px 20px 40px !important;
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 68%, #050608 68%, #050608 100%) !important;
   }
-  .aqua-cta-banner__heading {
-    font-size: 32px;
-    margin-bottom: 14px;
+  .aqua-cta-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 44px 28px 0 !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
   }
-  .aqua-cta-banner__desc {
-    font-size: 15px;
-    margin-bottom: 28px;
+  .aqua-cta-card__content {
+    max-width: 100% !important;
+    margin-bottom: 28px !important;
   }
-  .aqua-cta-banner__header {
-    margin-bottom: 40px;
+  .aqua-cta-card__heading {
+    font-size: 32px !important;
+    margin-bottom: 14px !important;
   }
-  .aqua-cta-banner__btn {
-    padding: 12px 24px;
-    font-size: 12px;
+  .aqua-cta-card__desc {
+    font-size: 15px !important;
+    margin-bottom: 24px !important;
   }
-  .aqua-cta-banner__hero {
-    display: flex !important;
+  .aqua-cta-card__visual {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    height: 260px !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 10px !important;
+  }
+  .aqua-cta-card__img {
+    max-height: 260px !important;
+    object-position: bottom center !important;
   }
 }
 
-/* =========================================================================
-   22. FOOTER: AQUAFORCE PREMIUM DARK FOOTER (.aqua-footer)
-   ========================================================================= */
+/* Full Footer Parallax Stacking Context & Sticky Reveal */
+.page-wrapper {
+  position: relative !important;
+  z-index: 2 !important;
+  overflow: visible !important;
+}
+
 .aqua-cta-banner {
   position: relative !important;
-  z-index: 10 !important;
-  margin-bottom: 0 !important;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  box-shadow: none !important;
+  z-index: 2 !important;
 }
 
 .aqua-footer {
-  position: relative !important;
-  z-index: 1 !important;
   background-color: #050608;
   color: #ffffff;
   padding: 64px 32px 32px !important;
-  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 992px) {
+  .page-wrapper {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4) !important;
+  }
+  .aqua-footer {
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+  }
+}
+
+@media (max-width: 991px) {
   .aqua-cta-banner {
     margin-bottom: 0 !important;
   }
   .aqua-footer {
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
     padding: 48px 20px 24px !important;
   }
 }
@@ -3424,7 +3647,7 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
 }
 
 .aqua-footer__heading {
-  font-family: 'Geist', sans-serif;
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -3454,16 +3677,62 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   color: #ffffff;
 }
 
+/* Giant Watermark Brand Word (.aqua-footer__watermark) */
+.aqua-footer__watermark {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Microgramma Bold Extended", "Microgramma", "Microgramma W01 Bold Extended", sans-serif !important;
+  font-size: clamp(52px, 14vw, 195px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 0.9;
+  color: rgba(255, 255, 255, 0.40);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.48) 0%, rgba(255, 255, 255, 0.22) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-top: 56px;
+  margin-bottom: -32px;
+  position: relative;
+  z-index: 1;
+}
+
+.aqua-footer__watermark span {
+  display: inline-block;
+  will-change: transform;
+  font-family: "Microgramma Bold Extended", "Microgramma", "Microgramma W01 Bold Extended", sans-serif !important;
+  font-weight: 700;
+  letter-spacing: inherit;
+}
+
+@media (max-width: 768px) {
+  .aqua-footer__watermark {
+    font-size: clamp(38px, 14vw, 88px);
+    margin-top: 36px;
+    margin-bottom: -16px;
+    letter-spacing: 0.03em;
+  }
+}
+
 /* Sub-Footer Bottom Bar */
 .aqua-footer__subbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 32px;
-  margin-top: 48px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  margin-top: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 14px;
   color: #64748b;
+  position: relative;
+  z-index: 2;
 }
 
 .aqua-footer__legal {
@@ -3556,7 +3825,7 @@ a, button, input[type="submit"], input[type="button"], [role="button"],
 }
 
 .home-hero__header .btn-group .btn-icon-content__text {
-  font-family: var(--_fonts---fonts--heading, "Geist", Arial, sans-serif) !important;
+  font-family: var(--_fonts---fonts--heading, "Neue Montreal", "PP Neue Montreal", Arial, sans-serif) !important;
   font-size: 13px !important;
   font-weight: 700 !important;
   letter-spacing: 0.05em !important;
@@ -3616,7 +3885,7 @@ a, button, input[type="submit"], input[type="button"], [role="button"],
    SECTION 2 CATEGORY UNIFIED TEXT & CTA LAYOUT (MATCHING REFERENCE IMAGE)
    ========================================================================= */
 .aqua-story__badge-kicker {
-  font-family: var(--font-geist, "Geist", sans-serif) !important;
+  font-family: var(--font-neue-montreal, "Neue Montreal", "PP Neue Montreal", sans-serif) !important;
   font-size: 13px !important;
   font-weight: 600 !important;
   letter-spacing: 0.12em !important;
@@ -3640,7 +3909,7 @@ a, button, input[type="submit"], input[type="button"], [role="button"],
   color: #0b0d11 !important;
   border: 1px solid #ffffff !important;
   border-radius: 6px !important;
-  font-family: var(--font-geist, "Geist", sans-serif) !important;
+  font-family: var(--font-neue-montreal, "Neue Montreal", "PP Neue Montreal", sans-serif) !important;
   font-size: 13px !important;
   font-weight: 700 !important;
   letter-spacing: 0.05em !important;
@@ -3901,29 +4170,1633 @@ section, [id] {
   }
 }
 
-@media (max-width: 480px) {
-  .home-hero__header .heading-xl {
-    font-size: 1.85rem !important;
-  }
 
-  .btn-group {
+/* ========================================================================= */
+/* NEW HERO SECTION & CLEAN NAVBAR (MATCHING REFERENCE DESIGN)               */
+/* ========================================================================= */
+
+.navigation {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+}
+
+.nav__bar {
+  pointer-events: auto !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 12px 48px !important;
+  border-radius: 0 !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Scrolled State: Floating Dark Glass Pill Bar when user enters Section 2 */
+.navigation.is-scrolled .nav__bar,
+.nav__bar.is-scrolled {
+  margin: 14px auto 0 !important;
+  padding: 10px 24px !important;
+  max-width: 1320px !important;
+  border-radius: 12px !important;
+  background: rgba(18, 21, 26, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Nav Brand Logo */
+.promec-nav-logo-link {
+  display: flex !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+}
+.promec-nav-logo-svg {
+  width: 148px !important;
+  height: auto !important;
+  display: block !important;
+}
+.navigation.is-scrolled .promec-nav-logo-svg {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Nav Links Menu */
+.promec-nav-menu {
+  display: flex !important;
+  align-items: center !important;
+  gap: 28px !important;
+}
+.promec-nav-link {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  color: #1f2937 !important;
+  text-decoration: none !important;
+  letter-spacing: -0.01em !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+  position: relative !important;
+  padding: 4px 0 !important;
+}
+.promec-nav-link:hover {
+  color: #000000 !important;
+}
+.promec-nav-link::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 2px !important;
+  background: #11100e !important;
+  transition: width 0.25s ease !important;
+}
+.promec-nav-link:hover::after {
+  width: 100% !important;
+}
+.navigation.is-scrolled .promec-nav-link {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.navigation.is-scrolled .promec-nav-link:hover {
+  color: #ffffff !important;
+}
+.navigation.is-scrolled .promec-nav-link::after {
+  background: #ffffff !important;
+}
+
+/* Right Action Icons */
+.promec-nav-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+}
+.promec-nav-icon-btn {
+  background: none !important;
+  border: none !important;
+  padding: 6px !important;
+  color: #11100e !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+  border-radius: 50% !important;
+  text-decoration: none !important;
+}
+.promec-nav-icon-btn:hover {
+  opacity: 0.7 !important;
+  transform: translateY(-1px) !important;
+}
+.navigation.is-scrolled .promec-nav-icon-btn {
+  color: #ffffff !important;
+}
+
+/* Hero Section with Hero_desk.png */
+.promec-hero-section {
+  position: relative !important;
+  width: 100% !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  background-color: #f0f3f6 !important;
+  background-image: url('assets/Hero_desk.png') !important;
+  background-position: right bottom !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  padding-top: 72px !important;
+  overflow: hidden !important;
+  z-index: 2 !important;
+}
+
+.promec-hero__container {
+  max-width: 1360px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 16px 48px !important;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+.promec-hero__grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: auto !important;
+}
+
+/* Left Content */
+/* Gradient Opt4 Radial Scrim (Desktop) */
+.promec-hero-section::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: radial-gradient(
+    circle 850px at 24% 45%,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 255, 255, 0.75) 30%,
+    rgba(255, 255, 255, 0.40) 55%,
+    rgba(255, 255, 255, 0.12) 75%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.promec-hero__container {
+  max-width: 1360px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 16px 48px !important;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Left Content */
+.promec-hero__text-col {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  max-width: 520px !important;
+  z-index: 2 !important;
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.promec-hero__heading {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: clamp(42px, 5.2vw, 68px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.035em !important;
+  color: #0b0b0b !important;
+  margin: 0 0 16px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.promec-hero__line-light {
+  font-weight: 300 !important;
+  color: #18181b !important;
+}
+
+.promec-hero__line-bold {
+  font-weight: 900 !important;
+  color: #000000 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.promec-hero__model-badge {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.36em !important;
+  text-transform: uppercase !important;
+  color: #4b5563 !important;
+  margin-bottom: 18px !important;
+}
+
+.promec-hero__description {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: clamp(14.5px, 1.15vw, 16px) !important;
+  line-height: 1.62 !important;
+  color: #4b5563 !important;
+  max-width: 460px !important;
+  margin: 0 0 32px 0 !important;
+  font-weight: 400 !important;
+}
+
+.promec-hero__actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-wrap: wrap !important;
+}
+
+.promec-hero__btn-primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  padding: 13px 26px !important;
+  border-radius: 9999px !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1.5px solid #000000 !important;
+}
+.promec-hero__btn-primary:hover {
+  background: #27272a !important;
+  border-color: #27272a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22) !important;
+}
+
+.promec-hero__btn-secondary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  background: transparent !important;
+  color: #11100e !important;
+  border: 1.5px solid #11100e !important;
+  padding: 12px 24px !important;
+  border-radius: 9999px !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.promec-hero__btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+  transform: translateY(-2px) !important;
+}
+.promec-hero__play-icon {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: #11100e !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+}
+
+/* Right Visual on Desktop (represented directly in the full-bleed master image background) */
+.promec-hero__visual-col {
+  display: none !important;
+}
+
+.promec-hero__image-wrap {
+  position: relative !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+
+.promec-hero__main-image {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 480px !important;
+  object-fit: cover !important;
+  object-position: right center !important;
+  border-radius: 12px !important;
+  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.12)) !important;
+}
+
+/* Bottom Feature Strip */
+.promec-features-bar {
+  width: 100% !important;
+  background: rgba(255, 255, 255, 0.94) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-top: 1px solid rgba(229, 231, 235, 0.8) !important;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.8) !important;
+  padding: 16px 0 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  flex-shrink: 0 !important;
+}
+
+.promec-features-bar__grid {
+  max-width: 1360px !important;
+  margin: 0 auto !important;
+  padding: 0 48px !important;
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 20px !important;
+  align-items: center !important;
+}
+
+.promec-feature-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 10px !important;
+}
+
+.promec-feature-icon {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid #d1d5db !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #11100e !important;
+  background: #ffffff !important;
+  transition: all 0.2s ease !important;
+}
+
+.promec-feature-item:hover .promec-feature-icon {
+  border-color: #11100e !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.promec-feature-label {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #1f2937 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 991px) {
+  .promec-hero-section {
+    background-image: url('assets/Hero_mobile.png') !important;
+    background-position: center bottom !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    padding-top: 68px !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    display: flex !important;
     flex-direction: column !important;
-    align-items: stretch !important;
+    justify-content: space-between !important;
   }
+  .promec-hero__container {
+    min-height: auto !important;
+    max-height: none !important;
+    padding: 16px 20px 8px !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    flex: 1 1 auto !important;
+  }
+  .promec-hero__grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 14px !important;
+    min-height: auto !important;
+    width: 100% !important;
+  }
+  /* Gradient Mobile Warm Scrim */
+  .promec-hero-section::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 254, 250, 0.88) 25%,
+      rgba(255, 252, 245, 0.65) 42%,
+      rgba(255, 250, 240, 0.30) 55%,
+      rgba(255, 248, 235, 0) 68%
+    ) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+  }
+  .promec-hero__container {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+  .promec-hero__text-col {
+    max-width: 100% !important;
+    align-items: center !important;
+    background: none !important;
+    padding: 8px 12px !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    z-index: 2 !important;
+  }
+  .promec-hero__heading {
+    font-size: clamp(28px, 7.8vw, 38px) !important;
+    margin-bottom: 6px !important;
+  }
+  .promec-hero__model-badge {
+    font-size: 11px !important;
+    margin-bottom: 8px !important;
+  }
+  .promec-hero__description {
+    text-align: center !important;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 16px !important;
+    max-width: 320px !important;
+  }
+  .promec-hero__actions {
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+  .promec-hero__btn-primary {
+    padding: 10px 20px !important;
+    font-size: 13px !important;
+  }
+  .promec-hero__btn-secondary {
+    padding: 9px 18px !important;
+    font-size: 13px !important;
+  }
+  .promec-hero__visual-col {
+    display: none !important;
+  }
+  .promec-features-bar__grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    padding: 0 16px !important;
+    gap: 10px !important;
+  }
+  .hide-mobile-feature {
+    display: none !important;
+  }
+  .promec-nav-menu {
+    display: none !important;
+  }
+}
 
-  .btn-icon-link {
+@media (max-width: 640px) {
+  .nav__bar {
+    padding: 10px 18px !important;
+  }
+  .promec-hero__heading {
+    font-size: clamp(34px, 9vw, 44px) !important;
+  }
+  .promec-hero__actions {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .promec-hero__btn-primary,
+  .promec-hero__btn-secondary {
+    width: 100% !important;
+  }
+  .promec-features-bar__grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8px !important;
+    padding: 0 12px !important;
+  }
+  .promec-feature-icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .promec-feature-label {
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* ==========================================================================
+   MULTIPLE POSSIBILITIES — 5 APPLICATION CATEGORIES (MATCHING MOCKUP)
+   ========================================================================== */
+.promec-possibilities-section {
+  position: relative !important;
+  width: 100% !important;
+  background-color: #ffffff !important;
+  padding: 68px 0 80px !important;
+  z-index: 5 !important;
+  box-sizing: border-box !important;
+}
+
+.promec-possibilities__container {
+  max-width: 1360px !important;
+  margin: 0 auto !important;
+  padding: 0 48px !important;
+  box-sizing: border-box !important;
+}
+
+/* Header */
+.promec-possibilities__header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-end !important;
+  margin-bottom: 36px !important;
+  gap: 32px !important;
+}
+
+.promec-possibilities__heading-col {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.promec-possibilities__kicker {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.promec-possibilities__kicker-line {
+  display: inline-block !important;
+  width: 26px !important;
+  height: 3.5px !important;
+  background-color: #84cc16 !important;
+  border-radius: 2px !important;
+}
+
+.promec-possibilities__kicker-text {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  color: #52525b !important;
+  text-transform: uppercase !important;
+}
+
+.promec-possibilities__title {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: clamp(34px, 4vw, 48px) !important;
+  font-weight: 900 !important;
+  line-height: 1.04 !important;
+  letter-spacing: -0.035em !important;
+  color: #09090b !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  text-transform: uppercase !important;
+}
+
+.promec-possibilities__info-col {
+  max-width: 440px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+}
+
+.promec-possibilities__desc {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 14.5px !important;
+  line-height: 1.55 !important;
+  color: #4b5563 !important;
+  margin: 0 !important;
+  font-weight: 400 !important;
+}
+
+.promec-possibilities__explore-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  padding: 11px 22px !important;
+  border-radius: 9999px !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+}
+.promec-possibilities__explore-btn:hover {
+  background: #27272a !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2) !important;
+}
+.promec-possibilities__explore-btn .mobile-text {
+  display: none !important;
+}
+
+/* Grid of 4 Cards */
+.promec-possibilities__grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 20px !important;
+  align-items: stretch !important;
+}
+
+.promec-possibilities__card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+}
+
+.promec-possibilities__card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.09) !important;
+  border-color: #cbd5e1 !important;
+}
+
+.promec-possibilities__card-media {
+  position: relative !important;
+  width: 100% !important;
+  height: 170px !important;
+  overflow: hidden !important;
+  background: #f1f5f9 !important;
+}
+
+.promec-possibilities__card-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.promec-possibilities__card:hover .promec-possibilities__card-img {
+  transform: scale(1.06) !important;
+}
+
+.promec-possibilities__card-body {
+  padding: 16px 18px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  flex: 1 1 auto !important;
+  position: relative !important;
+  background: #ffffff !important;
+  min-height: 98px !important;
+}
+
+.promec-possibilities__card-title-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.promec-possibilities__card-title {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #09090b !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  line-height: 1.25 !important;
+}
+
+.promec-card-arrow-line {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #71717a !important;
+  letter-spacing: normal !important;
+  transition: transform 0.25s ease, color 0.25s ease !important;
+  display: inline-block !important;
+}
+
+.promec-possibilities__card:hover .promec-card-arrow-line {
+  transform: translateX(4px) !important;
+  color: #09090b !important;
+}
+
+.promec-possibilities__card-desc {
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  color: #64748b !important;
+  margin: 8px 0 0 0 !important;
+  padding-right: 32px !important;
+  font-weight: 400 !important;
+}
+
+.promec-possibilities__card-circle-btn {
+  position: absolute !important;
+  right: 14px !important;
+  bottom: 16px !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid #d4d4d8 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #18181b !important;
+  background: #ffffff !important;
+  transition: all 0.25s ease !important;
+}
+
+.promec-possibilities__card:hover .promec-possibilities__card-circle-btn {
+  background: #09090b !important;
+  color: #ffffff !important;
+  border-color: #09090b !important;
+  transform: scale(1.08) !important;
+}
+
+/* Tablet & Mobile Responsiveness for Possibilities */
+@media (max-width: 1024px) {
+  .promec-possibilities-section {
+    padding: 50px 0 60px !important;
+  }
+  .promec-possibilities__container {
+    padding: 0 32px !important;
+  }
+  .promec-possibilities__header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+  .promec-possibilities__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .promec-possibilities-section {
+    padding: 40px 0 50px !important;
+  }
+  .promec-possibilities__container {
+    padding: 0 20px !important;
+  }
+  .promec-possibilities__header {
+    flex-direction: column !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+  }
+  .promec-possibilities__title {
+    font-size: 32px !important;
+  }
+  .promec-possibilities__info-col {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .promec-possibilities__explore-btn {
+    align-self: flex-start !important;
+  }
+  .promec-possibilities__explore-btn .desktop-text {
+    display: none !important;
+  }
+  .promec-possibilities__explore-btn .mobile-text {
+    display: inline !important;
+  }
+  /* Mobile symmetrical 2x2 grid for all 4 cards */
+  .promec-possibilities__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  .promec-possibilities__card-media {
+    height: 130px !important;
+  }
+  .promec-possibilities__card-desc {
+    font-size: 11.5px !important;
+    padding-right: 28px !important;
+  }
+  .promec-possibilities__card-circle-btn {
+    width: 24px !important;
+    height: 24px !important;
+    right: 12px !important;
+    bottom: 14px !important;
+  }
+}
+
+/* =========================================================================
+   24. IMMERSIVE SCATTERED FLOATING TILES PORTFOLIO SECTION
+   ========================================================================= */
+.promec-scatter-section {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 125vh !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 60px 0 !important;
+  box-sizing: border-box !important;
+  z-index: 1 !important;
+}
+
+.promec-scatter__inner {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 1440px !important;
+  min-height: 110vh !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 48px !important;
+  box-sizing: border-box !important;
+}
+
+/* Floating Tiles Stage Canvas */
+.promec-scatter__tiles-stage {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+/* Base Tile Styling - Sharp Rectangular Corners (radius: 0) & No Hover Effect */
+.promec-scatter__tile {
+  position: absolute !important;
+  pointer-events: none !important;
+  will-change: transform !important;
+  transform: translate3d(0, 0, 0);
+}
+
+.promec-scatter__tile-inner {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  background-color: #f1f5f9 !important;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.promec-scatter__img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 0 !important;
+}
+
+/* Desktop Tile Coordinates & Sizes (Arranged around Centered Headline) */
+.promec-scatter__tile--1  { left: 7%;  top: 10%; width: 145px; height: 175px; z-index: 3; }
+.promec-scatter__tile--2  { left: 26%; top: 13%; width: 120px; height: 120px; z-index: 3; }
+.promec-scatter__tile--3  { left: 47%; top: 7%;  width: 155px; height: 125px; z-index: 2; }
+.promec-scatter__tile--4  { left: 69%; top: 11%; width: 130px; height: 155px; z-index: 3; }
+.promec-scatter__tile--5  { left: 86%; top: 13%; width: 140px; height: 170px; z-index: 3; }
+
+.promec-scatter__tile--6  { left: 5%;  top: 45%; width: 130px; height: 155px; z-index: 3; }
+.promec-scatter__tile--7  { left: 14%; top: 73%; width: 135px; height: 135px; z-index: 4; }
+.promec-scatter__tile--8  { left: 86%; top: 44%; width: 130px; height: 155px; z-index: 3; }
+.promec-scatter__tile--9  { left: 84%; top: 71%; width: 140px; height: 175px; z-index: 3; }
+
+.promec-scatter__tile--10 { left: 33%; top: 79%; width: 135px; height: 135px; z-index: 3; }
+.promec-scatter__tile--11 { left: 63%; top: 77%; width: 150px; height: 125px; z-index: 4; }
+
+/* Headline Wrapper - Perfectly Centered in the Section */
+.promec-scatter__headline-wrap {
+  position: relative !important;
+  z-index: 6 !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: auto !important;
+  padding: 20px 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  pointer-events: none !important;
+}
+
+.promec-scatter__headline {
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: clamp(48px, 7.5vw, 108px) !important;
+  font-weight: 500 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.03em !important;
+  color: #000000 !important;
+  user-select: none !important;
+}
+
+.promec-scatter__line {
+  display: block !important;
+  text-align: center !important;
+  align-self: center !important;
+  margin-left: 0 !important;
+}
+
+.promec-scatter__line--1,
+.promec-scatter__line--2,
+.promec-scatter__line--3 {
+  text-align: center !important;
+  align-self: center !important;
+  margin-left: 0 !important;
+}
+
+/* Tablet Responsiveness */
+@media (max-width: 1024px) {
+  .promec-scatter-section {
+    min-height: 110vh !important;
+    padding: 50px 0 !important;
+  }
+  .promec-scatter__inner {
+    padding: 0 24px !important;
+    min-height: 95vh !important;
+  }
+  .promec-scatter__headline {
+    font-size: clamp(40px, 7vw, 76px) !important;
+  }
+  .promec-scatter__tile--1  { width: 110px !important; height: 135px !important; left: 4% !important; }
+  .promec-scatter__tile--2  { width: 100px !important; height: 100px !important; left: 24% !important; }
+  .promec-scatter__tile--3  { width: 120px !important; height: 95px !important; left: 46% !important; }
+  .promec-scatter__tile--4  { width: 105px !important; height: 125px !important; left: 68% !important; }
+  .promec-scatter__tile--5  { width: 110px !important; height: 135px !important; left: 84% !important; }
+  .promec-scatter__tile--6  { width: 100px !important; height: 125px !important; left: 3% !important; }
+  .promec-scatter__tile--7  { width: 105px !important; height: 105px !important; left: 12% !important; }
+  .promec-scatter__tile--8  { width: 100px !important; height: 125px !important; left: 85% !important; }
+  .promec-scatter__tile--9  { width: 110px !important; height: 135px !important; left: 83% !important; }
+  .promec-scatter__tile--10 { width: 110px !important; height: 110px !important; left: 30% !important; }
+  .promec-scatter__tile--11 { width: 120px !important; height: 95px !important; left: 62% !important; }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+  .promec-scatter-section {
+    min-height: 85vh !important;
+    padding: 30px 0 !important;
+  }
+  .promec-scatter__inner {
+    padding: 0 16px !important;
+    min-height: 75vh !important;
+  }
+  .promec-scatter__headline-wrap {
+    padding: 10px 0 !important;
+    max-width: 320px !important;
+  }
+  .promec-scatter__headline {
+    font-size: clamp(28px, 8.2vw, 38px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+  }
+  /* Show 6 strategic tiles on mobile positioned around centered headline */
+  .promec-scatter__tile--2,
+  .promec-scatter__tile--4,
+  .promec-scatter__tile--7,
+  .promec-scatter__tile--9,
+  .promec-scatter__tile--11 {
+    display: none !important;
+  }
+  .promec-scatter__tile--1  { left: 4% !important;  top: 8% !important; width: 70px !important; height: 85px !important; }
+  .promec-scatter__tile--3  { left: auto !important; right: 5% !important; top: 10% !important; width: 80px !important; height: 65px !important; }
+  .promec-scatter__tile--5  { left: auto !important; right: 4% !important; top: 25% !important; width: 68px !important; height: 82px !important; }
+  .promec-scatter__tile--6  { left: 3% !important;  top: 28% !important; width: 65px !important; height: 78px !important; }
+  .promec-scatter__tile--8  { left: 4% !important;  top: 82% !important; width: 72px !important; height: 86px !important; }
+  .promec-scatter__tile--10 { left: auto !important; right: 5% !important; top: 82% !important; width: 76px !important; height: 76px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promec-scatter__tile {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================================================================
+   AQUAFORCE 360° ROTATION VIEWPORT & FEATURE SHOWCASE (IMAGE 1 OVERLAY)
+   ========================================================================= */
+.promec-rotation-viewport {
+  position: relative !important;
+  width: 100% !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  height: 100dvh !important;
+  background-color: #060709 !important;
+  background: #060709 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  z-index: 25 !important;
+  box-sizing: border-box !important;
+}
+
+.promec-rotation-viewport__inner {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+.promec-rotation-viewport__video {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 25% center !important;
+  display: block !important;
+  background-color: #060709 !important;
+}
+
+/* 360° View Pill Badge */
+.promec-rotation-viewport__badge {
+  position: absolute !important;
+  bottom: 36px !important;
+  left: 110px !important;
+  background: rgba(12, 13, 16, 0.72) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  padding: 8px 18px !important;
+  border-radius: 999px !important;
+  color: #f4f4f5 !important;
+  font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  z-index: 10 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.promec-rotation-viewport__dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #eab308 !important;
+  box-shadow: 0 0 8px #eab308 !important;
+}
+
+/* Right Side Overlay Container */
+.promec-rotation-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 10 !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding-right: 6.5vw !important;
+  box-sizing: border-box !important;
+}
+
+.promec-rotation-content {
+  pointer-events: auto !important;
+  max-width: 580px !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+.promec-rotation-headline {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: clamp(38px, 4.2vw, 56px) !important;
+  font-weight: 750 !important;
+  line-height: 1.05 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.01em !important;
+  margin: 0 0 24px 0 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Feature Tabs Glassmorphic Card (Image 1 replica) */
+.promec-rotation-card {
+  background: rgba(26, 28, 34, 0.68) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 12px !important;
+  padding: 20px 22px 24px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45) !important;
+}
+
+.promec-rotation-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 6px !important;
+  padding-bottom: 16px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.promec-rotation-tab {
+  background: transparent !important;
+  border: none !important;
+  padding: 10px 4px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  cursor: pointer !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+  text-align: center !important;
+  outline: none !important;
+}
+
+.promec-rotation-tab svg {
+  stroke: rgba(255, 255, 255, 0.75) !important;
+  transition: stroke 0.2s ease !important;
+}
+
+.promec-rotation-tab span {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: 8.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase !important;
+  line-height: 1.15 !important;
+  display: block !important;
+}
+
+.promec-rotation-tab.is-active {
+  background: #ffffff !important;
+  color: #0c0d10 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.promec-rotation-tab.is-active svg {
+  stroke: #0c0d10 !important;
+}
+
+.promec-rotation-tab:hover:not(.is-active) {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+.promec-rotation-tab:hover:not(.is-active) svg {
+  stroke: #ffffff !important;
+}
+
+/* Feature Details */
+.promec-rotation-card-body {
+  padding-top: 18px !important;
+  min-height: 72px !important;
+}
+
+.promec-rotation-card-title {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.promec-rotation-card-desc {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  color: #cbd5e1 !important;
+  margin: 0 !important;
+}
+
+/* Action Buttons (Image 1 Style) */
+.promec-rotation-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-top: 24px !important;
+}
+
+.promec-rotation-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  border-radius: 999px !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+.promec-rotation-btn--outline {
+  padding: 11px 22px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.45) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(10px) !important;
+  color: #ffffff !important;
+}
+
+.promec-rotation-btn--outline:hover {
+  border-color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  transform: translateY(-2px) !important;
+}
+
+.promec-rotation-btn--solid {
+  padding: 11px 26px !important;
+  background: #ffffff !important;
+  color: #0c0d10 !important;
+  border: 1.5px solid #ffffff !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.promec-rotation-btn--solid:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Bottom-Left Down Indicator Arrow */
+.promec-rotation-down-arrow {
+  position: absolute !important;
+  bottom: 36px !important;
+  left: 48px !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: rgba(20, 22, 28, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: auto !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.promec-rotation-down-arrow:hover {
+  border-color: #ffffff !important;
+  transform: translateY(3px) !important;
+}
+
+/* Bottom-Right Corner Promo Badge */
+.promec-rotation-corner-badge {
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+  padding: 12px 28px !important;
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  letter-spacing: 0.08em !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+}
+
+/* Responsive: Tablet and Mobile */
+@media (max-width: 991px) {
+  .promec-rotation-viewport {
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 40px 20px 60px !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+  .promec-rotation-viewport__inner {
+    flex-direction: column !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .promec-rotation-viewport__video {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 320px !important;
+    max-height: 320px !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    margin-bottom: 12px !important;
+  }
+  .promec-rotation-viewport__badge {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    margin-bottom: 20px !important;
+    align-self: center !important;
+  }
+  .promec-rotation-overlay {
+    position: relative !important;
+    inset: auto !important;
+    padding-right: 0 !important;
     width: 100% !important;
     justify-content: center !important;
   }
-
-  .aqua-showcase__card {
-    height: 380px !important;
+  .promec-rotation-content {
+    max-width: 100% !important;
+    width: 100% !important;
   }
-
-  .aqua-testimonials__card {
-    padding: 18px !important;
+  .promec-rotation-headline {
+    font-size: 28px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 16px !important;
+    text-align: left !important;
+  }
+  .promec-rotation-card {
+    padding: 16px 14px 18px !important;
+  }
+  .promec-rotation-tabs {
+    display: flex !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    padding-bottom: 12px !important;
+  }
+  .promec-rotation-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+  .promec-rotation-tab {
+    flex: 0 0 auto !important;
+    min-width: 68px !important;
+    padding: 8px 6px !important;
+  }
+  .promec-rotation-tab span {
+    font-size: 8px !important;
+  }
+  .promec-rotation-card-body {
+    padding-top: 14px !important;
+    min-height: auto !important;
+  }
+  .promec-rotation-card-title {
+    font-size: 13.5px !important;
+    margin-bottom: 6px !important;
+  }
+  .promec-rotation-card-desc {
+    font-size: 12.5px !important;
+  }
+  .promec-rotation-actions {
+    display: flex !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
+  }
+  .promec-rotation-btn {
+    flex: 1 !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 10px 14px !important;
+    font-size: 11.5px !important;
+  }
+  .promec-rotation-down-arrow,
+  .promec-rotation-corner-badge {
+    display: none !important;
   }
 }
+
+/* ==========================================================================
+   03C. WHY AQUAFORCE? — VALUE PROPOSITION & CAPABILITIES GRID SECTION
+   ========================================================================== */
+.why-aquaforce-section {
+  position: relative !important;
+  width: 100% !important;
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  padding: 104px 0 114px !important;
+  z-index: 5 !important;
+  box-sizing: border-box !important;
+}
+
+.why-aquaforce-container {
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 0 32px !important;
+  box-sizing: border-box !important;
+}
+
+.why-aquaforce-header {
+  text-align: center !important;
+  margin-bottom: 56px !important;
+}
+
+.why-aquaforce-title {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: clamp(32px, 3.8vw, 44px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 0 14px 0 !important;
+  color: #0b0f19 !important;
+}
+
+.why-aquaforce-title__light {
+  font-weight: 400 !important;
+  color: #1e293b !important;
+}
+
+.why-aquaforce-title__bold {
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+
+.why-aquaforce-subtitle {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: clamp(15px, 1.2vw, 17px) !important;
+  color: #64748b !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+  font-weight: 400 !important;
+}
+
+.why-aquaforce-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  width: 100% !important;
+}
+
+.why-aquaforce-row-split {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+  width: 100% !important;
+}
+
+.why-aquaforce-card {
+  position: relative !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  background-color: #090a0f !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+  cursor: pointer !important;
+}
+
+.why-aquaforce-card--wide {
+  width: 100% !important;
+  height: clamp(340px, 28vw, 400px) !important;
+}
+
+.why-aquaforce-card--half {
+  width: 100% !important;
+  height: clamp(320px, 26vw, 370px) !important;
+}
+
+.why-aquaforce-card__img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.why-aquaforce-card:hover .why-aquaforce-card__img {
+  transform: scale(1.035) !important;
+}
+
+.why-aquaforce-card__scrim {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.50) 28%,
+    rgba(0, 0, 0, 0.18) 55%,
+    rgba(0, 0, 0, 0) 80%
+  ),
+  linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.70) 0%,
+    rgba(0, 0, 0, 0.32) 35%,
+    rgba(0, 0, 0, 0) 65%
+  ) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.why-aquaforce-card__content {
+  position: absolute !important;
+  bottom: 34px !important;
+  left: 38px !important;
+  max-width: 440px !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+.why-aquaforce-card__title {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: clamp(22px, 2.2vw, 26px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  margin: 0 0 8px 0 !important;
+  line-height: 1.1 !important;
+}
+
+.why-aquaforce-card__desc {
+  font-family: "Neue Montreal", "PP Neue Montreal", sans-serif !important;
+  font-size: clamp(14px, 1.1vw, 15.5px) !important;
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.90) !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 991px) {
+  .why-aquaforce-section {
+    padding: 64px 0 72px !important;
+  }
+  .why-aquaforce-container {
+    padding: 0 20px !important;
+  }
+  .why-aquaforce-header {
+    margin-bottom: 36px !important;
+  }
+  .why-aquaforce-row-split {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .why-aquaforce-grid {
+    gap: 16px !important;
+  }
+  .why-aquaforce-card--wide,
+  .why-aquaforce-card--half {
+    height: 290px !important;
+    border-radius: 16px !important;
+  }
+  .why-aquaforce-card__content {
+    bottom: 24px !important;
+    left: 24px !important;
+    right: 24px !important;
+    max-width: none !important;
+  }
+  .why-aquaforce-card__title {
+    font-size: 20px !important;
+    margin-bottom: 6px !important;
+  }
+  .why-aquaforce-card__desc {
+    font-size: 13.5px !important;
+  }
+}
+
+
+
 
 
 

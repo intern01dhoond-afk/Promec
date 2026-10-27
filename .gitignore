@@ -8,6 +8,7 @@ build/
 # Large media / source files
 *.zip
 Pressure_washer_camera_rotation_1080p_202609081213_00239/
+.backup_assets/
 
 # Environment
 .env
@@ -23,3 +24,7 @@ Thumbs.db
 
 # Vite
 *.local
+
+# Temporary scratch and test files
+scratch/
+

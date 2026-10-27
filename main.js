@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       } else if (target === "solutions" || target === "category") {
         setActiveNavLink("solutions");
-        const el = document.getElementById("story");
+        const el = document.getElementById("applications") || document.getElementById("engineering");
         if (el) {
           if (typeof lenis !== "undefined" && lenis) {
             lenis.scrollTo(el, { offset: 0, duration: 1.0 });
@@ -280,6 +280,19 @@ document.addEventListener("DOMContentLoaded", () => {
             lenis.scrollTo(el, { offset: 0, duration: 1.2 });
           } else {
             el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      } else {
+        const href = link.getAttribute("href");
+        if (href && href.startsWith("#") && href.length > 1) {
+          setActiveNavLink(target);
+          const el = document.querySelector(href);
+          if (el) {
+            if (typeof lenis !== "undefined" && lenis) {
+              lenis.scrollTo(el, { offset: -40, duration: 1.0 });
+            } else {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
           }
         }
       }
@@ -407,11 +420,11 @@ document.addEventListener("DOMContentLoaded", () => {
       onLeaveBack: () => setActiveNavLink("about")
     });
 
-    const header = ctaBannerSec.querySelector(".aqua-cta-banner__header");
-    const productImg = ctaBannerSec.querySelector(".aqua-cta-banner__product-img");
+    const cardContent = ctaBannerSec.querySelector(".aqua-cta-card__content, .aqua-cta-banner__header");
+    const visual = ctaBannerSec.querySelector(".aqua-cta-card__visual, .aqua-cta-banner__hero");
 
-    if (header && typeof gsap !== "undefined") {
-      gsap.from(header, {
+    if (cardContent && typeof gsap !== "undefined") {
+      gsap.from(cardContent, {
         scrollTrigger: {
           trigger: ctaBannerSec,
           start: "top 75%",
@@ -424,10 +437,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    if (productImg && typeof gsap !== "undefined") {
-      gsap.from(productImg, {
+    if (visual && typeof gsap !== "undefined") {
+      gsap.from(visual, {
         scrollTrigger: {
-          trigger: ".aqua-cta-banner__hero",
+          trigger: ctaBannerSec,
           start: "top 80%",
           once: true
         },
@@ -494,21 +507,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Nav scroll background blur & floating pill transition
   // Stays completely transparent (Image 1) throughout the entire Hero section (including 360 rotation),
-  // and only transitions to the floating pill bar (Image 2) once the user reaches Section 2 (#story).
+  // and only transitions to the floating pill bar once the user reaches #applications or #engineering.
   const navBar = document.querySelector(".nav__bar");
   const navNavigation = document.querySelector(".navigation");
-  const storySectionEl = document.getElementById("story");
+  const nextSectionEl = document.getElementById("applications") || document.getElementById("engineering");
 
   function updateNavScrollState() {
     if (!navBar) return;
     let isScrolled = false;
-    if (storySectionEl) {
-      const rect = storySectionEl.getBoundingClientRect();
-      // Section 2 has arrived at or near the top of the viewport
+    if (nextSectionEl) {
+      const rect = nextSectionEl.getBoundingClientRect();
       isScrolled = rect.top <= 120;
     } else {
       const currentY = window.scrollY || window.pageYOffset || (typeof lenis !== "undefined" && lenis ? lenis.scroll : 0) || document.documentElement.scrollTop || 0;
-      isScrolled = currentY >= 2500;
+      isScrolled = currentY >= 800;
     }
     navBar.classList.toggle("is-scrolled", isScrolled);
     if (navNavigation) navNavigation.classList.toggle("is-scrolled", isScrolled);
@@ -529,9 +541,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof lenis !== "undefined" && lenis) {
     lenis.on("scroll", updateNavScrollState);
   }
-  if (storySectionEl && typeof ScrollTrigger !== "undefined") {
+  if (nextSectionEl && typeof ScrollTrigger !== "undefined") {
     ScrollTrigger.create({
-      trigger: storySectionEl,
+      trigger: nextSectionEl,
       start: "top 120px",
       onUpdate: () => updateNavScrollState()
     });
@@ -539,230 +551,32 @@ document.addEventListener("DOMContentLoaded", () => {
   updateNavScrollState();
 
   // -------------------------------------------------------------
-  // 10. HERO 360° PRESSURE WASHER CAMERA ROTATION & SCROLL SCRUBBER
+  // 10. NEW HERO ENTRANCE ANIMATIONS & SMOOTH INTERACTIONS
   // -------------------------------------------------------------
-  const heroSection = document.querySelector("[data-hero]") || document.getElementById("overview");
-  const heroCanvas = document.querySelector("[data-hero-canvas]");
-  const heroVideo = document.querySelector(".hero__video video");
-  const heroContent = document.querySelector("[data-hero-content]");
-  const heroScroll = document.querySelector(".scrolldown-indicator");
-  const totalHeroFrames = 240;
-  const heroFrames = new Array(totalHeroFrames);
-  let currentHeroFrameObj = null;
+  const newHeroHeading = document.querySelector(".promec-hero__heading");
+  const newHeroBadge = document.querySelector(".promec-hero__model-badge");
+  const newHeroDesc = document.querySelector(".promec-hero__description");
+  const newHeroActions = document.querySelector(".promec-hero__actions");
+  const newHeroVisual = document.querySelector(".promec-hero__visual-col");
+  const newFeatureItems = document.querySelectorAll(".promec-feature-item");
 
-  function drawHeroCanvasFrame(img) {
-    if (!heroCanvas || !img) return;
-    if (!img.complete || !img.naturalWidth) return;
-    const ctx = heroCanvas.getContext("2d");
-    const cw = heroCanvas.width;
-    const ch = heroCanvas.height;
-    if (!cw || !ch) return;
-
-    const nw = img.naturalWidth;
-    const nh = img.naturalHeight;
-    const scale = Math.max(cw / nw, ch / nh);
-    const x = (cw - nw * scale) / 2;
-    const y = (ch - nh * scale) / 2;
-
-    ctx.drawImage(img, x, y, nw * scale, nh * scale);
-  }
-
-  function resizeHeroCanvas() {
-    if (!heroCanvas) return;
-    const dpr = window.devicePixelRatio || 1;
-    const w = (heroSection && heroSection.clientWidth) || window.innerWidth;
-    const h = window.innerHeight;
-
-    if (heroCanvas.width !== w * dpr || heroCanvas.height !== h * dpr) {
-      heroCanvas.width = w * dpr;
-      heroCanvas.height = h * dpr;
-      heroCanvas.style.width = w + "px";
-      heroCanvas.style.height = h + "px";
-    }
-    if (currentHeroFrameObj) drawHeroCanvasFrame(currentHeroFrameObj);
-  }
-
-  function findNearestHeroFrame(targetIdx) {
-    if (heroFrames[targetIdx]) return targetIdx;
-    for (let r = 1; r < totalHeroFrames; r++) {
-      if (targetIdx - r >= 0 && heroFrames[targetIdx - r]) return targetIdx - r;
-      if (targetIdx + r < totalHeroFrames && heroFrames[targetIdx + r]) return targetIdx + r;
-    }
-    return 0;
-  }
-
-  function getHeroFrameUrl(i) {
-    if (heroCanvas) {
-      const srcPrefix = heroCanvas.getAttribute("data-src") || "Pressure_washer_camera_rotation_1080p_202609081213_00239/Pressure_washer_camera_rotation_1080p_202609081213_";
-      const filetype = heroCanvas.getAttribute("data-filetype") || "png";
-      const digits = parseInt(heroCanvas.getAttribute("data-digits") || "5", 10);
-      const pad = String(i).padStart(digits, "0");
-      return `${srcPrefix}${pad}.${filetype}`;
-    }
-    const pad = String(i).padStart(5, "0");
-    return `Pressure_washer_camera_rotation_1080p_202609081213_00239/Pressure_washer_camera_rotation_1080p_202609081213_${pad}.png`;
-  }
-
-  // Preload frame 0 immediately
-  const frame0 = new Image();
-  frame0.src = getHeroFrameUrl(0);
-  frame0.onload = () => {
-    heroFrames[0] = frame0;
-    currentHeroFrameObj = frame0;
-    const heroVideoWrapper = document.querySelector(".hero__video");
-    if (heroContent) {
-      gsap.set(heroContent, { autoAlpha: 1, visibility: "visible" });
-    }
-    if (heroCanvas) {
-      gsap.set(heroCanvas, { autoAlpha: 1, visibility: "visible" });
-    }
-    if (heroVideoWrapper) {
-      gsap.set(heroVideoWrapper, { autoAlpha: 0, visibility: "hidden" });
-    }
-    if (heroVideo && !heroVideo.paused) {
-      heroVideo.pause();
-    }
-    const heroCardVideos = document.querySelectorAll(".mini-showreel video");
-    heroCardVideos.forEach((v) => {
-      v.muted = true;
-      v.playsInline = true;
-      if (v.paused) v.play().catch(() => {});
-    });
-    resizeHeroCanvas();
-    drawHeroCanvasFrame(frame0);
-  };
-
-  // Two-phase interleaved preloader:
-  // Phase 1: Load every 4th frame (0, 4, 8... 236) AND the final frame 239 -> instant 360° rotation coverage in <250ms
-  // Phase 2: Progressively fill in the remaining frames for buttery 60fps
-  function preloadHeroFrames() {
-    const phase1Indices = [];
-    for (let i = 0; i < totalHeroFrames; i += 4) {
-      phase1Indices.push(i);
-    }
-    if (!phase1Indices.includes(totalHeroFrames - 1)) {
-      phase1Indices.push(totalHeroFrames - 1);
-    }
-
-    phase1Indices.forEach((i) => {
-      if (heroFrames[i]) return;
-      const img = new Image();
-      img.src = getHeroFrameUrl(i);
-      img.onload = () => {
-        heroFrames[i] = img;
-      };
-    });
-
-    setTimeout(() => {
-      for (let i = 1; i < totalHeroFrames; i++) {
-        if (i % 4 === 0 || i === totalHeroFrames - 1) continue;
-        const img = new Image();
-        img.src = getHeroFrameUrl(i);
-        img.onload = () => {
-          heroFrames[i] = img;
-        };
-      }
-    }, 120);
-  }
-  preloadHeroFrames();
-
-  window.addEventListener("resize", () => {
-    resizeHeroCanvas();
-  });
-
-  // Hero section PINNED ScrollTrigger:
-  // - Pinned while user scrubs the 360-degree camera rotation around the pressure washer
-  // - Once rotation completes, cleanly unpins and glides down into Section 2
-  const heroPinDistance = 2600;
-
-  const heroST = ScrollTrigger.create({
-    trigger: heroSection,
-    start: "top top",
-    end: "+=" + heroPinDistance,
-    pin: true,
-    anticipatePin: 1,
-    scrub: true,
-    onUpdate: (self) => {
-      const progress = Math.max(0, Math.min(1, self.progress));
-      const frameIdx = Math.min(totalHeroFrames - 1, Math.floor(progress * totalHeroFrames));
-
-      const heroVideoWrapper = document.querySelector(".hero__video");
-
-      if (heroCanvas) gsap.set(heroCanvas, { autoAlpha: 1, visibility: "visible" });
-      if (heroVideoWrapper) gsap.set(heroVideoWrapper, { autoAlpha: 0, visibility: "hidden" });
-      if (heroVideo && !heroVideo.paused) {
-        heroVideo.pause();
-      }
-
-      // 1. Draw 1080p canvas frame
-      const nearestIdx = heroFrames[frameIdx] ? frameIdx : findNearestHeroFrame(frameIdx);
-      const img = heroFrames[nearestIdx] || heroFrames[0];
-      if (img) {
-        currentHeroFrameObj = img;
-        drawHeroCanvasFrame(img);
-      }
-
-      // 2. Fade out header typography during initial 22% of rotation, keeping bottom-right video card visible
-      const heroHeaderEl = document.querySelector(".home-hero__header");
-      const heroVideoWidgetEl = document.querySelector(".home-hero__video");
-
-      if (heroHeaderEl) {
-        const fadeProgress = Math.max(0, Math.min(1, progress / 0.22));
-        gsap.set(heroHeaderEl, {
-          opacity: 1 - fadeProgress,
-          y: -30 * fadeProgress,
-          pointerEvents: fadeProgress > 0.5 ? "none" : "auto"
-        });
-      }
-
-      if (heroVideoWidgetEl) {
-        gsap.set(heroVideoWidgetEl, {
-          opacity: 1,
-          pointerEvents: "auto"
-        });
-      }
-    },
-    onLeave: () => {
-      // Rotation complete, ensure final frame is drawn
-      const lastImg = heroFrames[totalHeroFrames - 1] || heroFrames[findNearestHeroFrame(totalHeroFrames - 1)];
-      if (lastImg) {
-        currentHeroFrameObj = lastImg;
-        drawHeroCanvasFrame(lastImg);
-      }
-      const heroHeaderEl = document.querySelector(".home-hero__header");
-      if (heroHeaderEl) {
-        gsap.set(heroHeaderEl, { opacity: 0, pointerEvents: "none" });
-      }
-    }
-  });
-
-  // Entrance typography reveal
-  const heroTl = gsap.timeline({ delay: 0.2 });
-  const heroEyebrow = document.querySelector(".home-hero__header .eyebrow-style");
-  const heroHeading = document.querySelector(".home-hero__header .heading-xl");
-  const heroPara = document.querySelector(".home-hero__header .paragraph-m");
-  const heroBtns = document.querySelector(".home-hero__header .btn-group");
-
-  if (heroHeading) {
+  if (newHeroHeading) {
+    const heroTl = gsap.timeline({ delay: 0.15 });
     heroTl
-      .fromTo(heroEyebrow, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 })
-      .fromTo(heroHeading, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8 }, "-=0.4")
-      .fromTo(heroPara, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.5")
-      .fromTo(heroBtns, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4")
-      .fromTo(heroScroll, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3");
-  }
+      .fromTo(newHeroHeading, { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.75, ease: "power2.out" })
+      .fromTo(newHeroBadge, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "-=0.45")
+      .fromTo(newHeroDesc, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, "-=0.35")
+      .fromTo(newHeroActions, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, "-=0.35")
+      .fromTo(newHeroVisual, { opacity: 0, scale: 0.94, y: 15 }, { opacity: 1, scale: 1, y: 0, duration: 0.85, ease: "power2.out" }, "-=0.6");
 
-  // Scroll down indicator click -> scrolls through the hero 360 to Section 2
-  if (heroScroll) {
-    heroScroll.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetScroll = heroST.end + 10;
-      if (window.lenis) {
-        window.lenis.scrollTo(targetScroll, { duration: 1.2 });
-      } else {
-        window.scrollTo({ top: targetScroll, behavior: "smooth" });
-      }
-    });
+    if (newFeatureItems.length > 0) {
+      heroTl.fromTo(
+        newFeatureItems,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.45, stagger: 0.06, ease: "power2.out" },
+        "-=0.4"
+      );
+    }
   }
 
   // -------------------------------------------------------------
@@ -914,99 +728,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         if (productFrame) gsap.set(productFrame, { rotateY: 0 });
 
-        // Track bridge state to prevent flickering
-        let bridgeComplete = false;
-
-        // BRIDGE SCROLL TRIGGER: Spans from hero unpin to Section 2 Row 1 in-view
-        if (bridgeEl && bridgeCard) {
-          ScrollTrigger.create({
-            trigger: storySection,
-            start: "top 85%",
-            end: "top 15%",
-            scrub: 0.8,
-            onUpdate: (self) => {
-              const p = self.progress;
-
-              // Show bridge element
-              gsap.set(bridgeEl, { autoAlpha: 1 });
-
-              // Animate bridge card from center of viewport (0, 0) to Row 1 floor corner position
-              const startScale = 1.4;
-              const endScale = 0.82;
-              const currentScale = startScale + (endScale - startScale) * p;
-
-              // X movement: center (0) → right side ground slot
-              const targetX = window.innerWidth * 0.36;
-              const currentX = targetX * p;
-
-              // Y movement: center (0) → floor level
-              const targetY = window.innerHeight * 0.23;
-              const currentY = targetY * p;
-
-              gsap.set(bridgeCard, {
-                xPercent: -50,
-                yPercent: -50,
-                x: currentX,
-                y: currentY,
-                scale: currentScale,
-                opacity: Math.min(1, p * 3)
-              });
-
-              // Fade out hero canvas simultaneously
-              if (heroCanvasEl) {
-                const canvasOpacity = Math.max(0, 1 - p * 2.5);
-                gsap.set(heroCanvasEl, {
-                  opacity: canvasOpacity,
-                  autoAlpha: canvasOpacity,
-                  visibility: canvasOpacity > 0.01 ? "visible" : "hidden"
-                });
-              }
-
-              // At 100% progress: handoff to productTraveler
-              if (p >= 0.98 && !bridgeComplete) {
-                bridgeComplete = true;
-                gsap.set(bridgeEl, { autoAlpha: 0 });
-                gsap.set(productStage, { autoAlpha: 1 });
-                setActiveStoryCategory(0);
-              }
-
-              // When scrolling back, re-show bridge and hide product stage
-              if (p < 0.95 && bridgeComplete) {
-                bridgeComplete = false;
-                gsap.set(productStage, { autoAlpha: 0 });
-                gsap.set(bridgeEl, { autoAlpha: 1 });
-                setActiveStoryCategory(-1);
-              }
-            },
-            onLeaveBack: () => {
-              bridgeComplete = false;
-              gsap.set(bridgeEl, { autoAlpha: 0 });
-              gsap.set(productStage, { autoAlpha: 0 });
-              if (bridgeCard) {
-                gsap.set(bridgeCard, {
-                  xPercent: -50,
-                  yPercent: -50,
-                  x: 0,
-                  y: 0,
-                  scale: 1.4,
-                  opacity: 0
-                });
-              }
-              setActiveStoryCategory(-1);
-              if (heroCanvasEl) {
-                gsap.set(heroCanvasEl, { opacity: 1, autoAlpha: 1, visibility: "visible" });
-              }
-            },
-            onLeave: () => {
-              bridgeComplete = true;
-              gsap.set(bridgeEl, { autoAlpha: 0 });
-              gsap.set(productStage, { autoAlpha: 1 });
-              if (heroCanvasEl) {
-                gsap.set(heroCanvasEl, { opacity: 0, autoAlpha: 0, visibility: "hidden" });
-              }
-            }
-          });
+        // Bridge element is disabled in favor of direct Section 2 productStage positioning
+        if (bridgeEl) {
+          gsap.set(bridgeEl, { autoAlpha: 0, display: "none" });
         }
+
+        // Reveal productStage directly as user scrolls into Section 2
+        ScrollTrigger.create({
+          trigger: storySection,
+          start: "top 75%",
+          onEnter: () => {
+            gsap.to(productStage, { autoAlpha: 1, duration: 0.4, overwrite: "auto" });
+            setActiveStoryCategory(0);
+          },
+          onLeaveBack: () => {
+            gsap.to(productStage, { autoAlpha: 0, duration: 0.3, overwrite: "auto" });
+            setActiveStoryCategory(-1);
+          }
+        });
 
         // ---------------------------------------------------------------
         // PHASE 2: SECTION 2 INTERNAL ROW-TO-ROW TRAVEL
@@ -1987,14 +1726,292 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // -------------------------------------------------------------
-  // 21. CINEMATIC CTA → FOOTER OVERLAP & REVEAL TRANSITION
+  // 21. FULL FOOTER PARALLAX & WATERMARK BOTTOM-TO-TOP REVEAL
   // -------------------------------------------------------------
-  const ctaBanner = document.querySelector(".aqua-cta-banner");
-  const footerOverlapSec = document.querySelector(".aqua-footer");
+  function initFooterParallax() {
+    const footer = document.querySelector(".aqua-footer");
+    const container = document.querySelector(".aqua-footer__container");
+    const watermarkSpan = footer ? footer.querySelector(".aqua-footer__watermark span") : null;
+    if (!footer || !container || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  if (ctaBanner && footerOverlapSec) {
-    gsap.set(ctaBanner, { y: 0 });
+    const isDesktop = window.innerWidth >= 992;
+
+    if (isDesktop) {
+      // Desktop: Smooth container glide as curtain reveals the footer
+      gsap.fromTo(
+        container,
+        { y: -50, opacity: 0.85 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: footer,
+            start: "top bottom",
+            end: "bottom bottom",
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    } else {
+      // Mobile: Fluid scroll-linked parallax without sticky pin
+      gsap.fromTo(
+        container,
+        { y: 25, opacity: 0.9 },
+        {
+          y: 0,
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: footer,
+            start: "top 95%",
+            end: "bottom bottom",
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    }
+
+    // High-Clarity Watermark Brand Reveal from Bottom to Top
+    if (watermarkSpan) {
+      gsap.fromTo(
+        watermarkSpan,
+        { yPercent: 110 },
+        {
+          yPercent: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: footer,
+            start: isDesktop ? "top 75%" : "top 80%",
+            end: "bottom bottom",
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    }
   }
+
+  initFooterParallax();
+
+  // -------------------------------------------------------------
+  // 22. IMMERSIVE FLOATING TILES SCATTER PARALLAX (WOLVERINE EDITORIAL EFFECT)
+  // -------------------------------------------------------------
+  function initScatterParallax() {
+    const scatterSection = document.getElementById("portfolio-scatter");
+    if (!scatterSection || typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const isMobile = window.innerWidth <= 767;
+    const tiles = scatterSection.querySelectorAll(".promec-scatter__tile");
+    if (!tiles.length) return;
+
+    tiles.forEach((tile) => {
+      const rawSpeed = parseFloat(tile.getAttribute("data-scatter-speed")) || 1.0;
+      // Scroll DOWN = images move continuously DOWN (+Y)
+      // Scroll UP = images move continuously UP (-Y)
+      const travel = (isMobile ? 260 : 620) * rawSpeed;
+      const startY = -travel * 0.45;
+      const endY = travel * 0.55;
+
+      gsap.fromTo(
+        tile,
+        { y: startY },
+        {
+          y: endY,
+          ease: "none",
+          scrollTrigger: {
+            trigger: scatterSection,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.5,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    });
+
+    const headline = scatterSection.querySelector(".promec-scatter__headline");
+    if (headline) {
+      gsap.fromTo(
+        headline,
+        { opacity: 0.85 },
+        {
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: scatterSection,
+            start: "top 85%",
+            end: "top 45%",
+            scrub: 0.5,
+          },
+        }
+      );
+    }
+  }
+
+  initScatterParallax();
+
+  // 360° Hardware Rotation Video Playback Controller
+  function initRotationVideo() {
+    const video = document.querySelector('.promec-rotation-viewport__video');
+    if (!video) return;
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const playPromise = video.play();
+              if (playPromise !== undefined) {
+                playPromise.catch(() => {});
+              }
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      observer.observe(video);
+    }
+  }
+
+  initRotationVideo();
+
+  // -------------------------------------------------------------
+  // 24. 360° ROTATION SECTION INTERACTIVE FEATURE TABS (IMAGE 1 + IMAGE 3)
+  // -------------------------------------------------------------
+  function initRotationFeatureTabs() {
+    const card = document.querySelector("[data-rotation-card]");
+    if (!card) return;
+
+    const tabs = card.querySelectorAll(".promec-rotation-tab");
+    const titleEl = card.querySelector(".promec-rotation-card-title");
+    const descEl = card.querySelector(".promec-rotation-card-desc");
+
+    const featureData = [
+      {
+        title: "POWERFUL BATTERY OPERATION",
+        desc: "High-voltage lithium cells deliver constant output throughout every wash cycle."
+      },
+      {
+        title: "3 HOURS CONTINUOUS USE",
+        desc: "Extended runtime for multiple vehicle cleaning sessions without interruption."
+      },
+      {
+        title: "BUILT-IN PRESSURE PUMP",
+        desc: "Precision engineering delivers 1400 PSI directly from an integrated internal pump."
+      },
+      {
+        title: "NO POWER SOCKET REQUIRED",
+        desc: "Complete operational freedom anywhere without relying on external power sources."
+      },
+      {
+        title: "VEHICLE OPTIMISED",
+        desc: "Precision nozzle for targeted cleaning on wheels, panels, and tight crevices."
+      },
+      {
+        title: "CORDLESS & PORTABLE",
+        desc: "Zero cables, lightweight chassis for easy maneuvering and transport in any vehicle trunk."
+      }
+    ];
+
+    let activeIndex = 0;
+    let autoTimer = null;
+    let isUserPaused = false;
+
+    function setFeature(index, animate = true) {
+      if (index < 0 || index >= featureData.length) return;
+      activeIndex = index;
+
+      tabs.forEach((tab, i) => {
+        const isActive = i === activeIndex;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      const data = featureData[activeIndex];
+      if (!data) return;
+
+      if (animate && typeof gsap !== "undefined" && titleEl && descEl) {
+        gsap.to([titleEl, descEl], {
+          opacity: 0,
+          y: -6,
+          duration: 0.15,
+          onComplete: () => {
+            titleEl.textContent = data.title;
+            descEl.textContent = data.desc;
+            gsap.fromTo(
+              [titleEl, descEl],
+              { opacity: 0, y: 8 },
+              { opacity: 1, y: 0, duration: 0.25, stagger: 0.05, ease: "power2.out" }
+            );
+          }
+        });
+      } else {
+        if (titleEl) titleEl.textContent = data.title;
+        if (descEl) descEl.textContent = data.desc;
+      }
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const idx = parseInt(tab.getAttribute("data-tab-index"), 10);
+        if (!isNaN(idx)) {
+          setFeature(idx, true);
+          isUserPaused = true;
+          stopAuto();
+          // Resume auto-cycle after 8s of inactivity
+          setTimeout(() => { isUserPaused = false; startAuto(); }, 8000);
+        }
+      });
+    });
+
+    function nextFeature() {
+      if (isUserPaused) return;
+      const nextIdx = (activeIndex + 1) % featureData.length;
+      setFeature(nextIdx, true);
+    }
+
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(nextFeature, 4500);
+    }
+
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    card.addEventListener("mouseenter", () => { isUserPaused = true; stopAuto(); });
+    card.addEventListener("mouseleave", () => { isUserPaused = false; startAuto(); });
+
+    // IntersectionObserver for video and auto-cycle
+    const rotationSec = document.getElementById("washer-rotation");
+    if (rotationSec && "IntersectionObserver" in window) {
+      const secObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              startAuto();
+            } else {
+              stopAuto();
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      secObserver.observe(rotationSec);
+    }
+  }
+
+  initRotationFeatureTabs();
 
   // Refresh ScrollTrigger after all pins and layouts are configured
   ScrollTrigger.refresh();
