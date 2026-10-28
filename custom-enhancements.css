@@ -588,17 +588,19 @@ div.nav.theme-light {
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* Scrolled State: Floating Dark Glass Pill Bar (Matching Reference Image 3) */
+/* Scrolled State: Floating Dark Glass Pill Bar (Matching Reference Image 2) */
 .navigation.is-scrolled .nav__bar,
 .nav__bar.is-scrolled {
   margin: 14px auto 0 !important;
-  padding: 10px 24px !important;
-  max-width: 1320px !important;
-  background: rgba(18, 21, 26, 0.78) !important;
+  padding: 8px 24px !important;
+  min-height: 48px !important;
+  width: 92% !important;
+  max-width: 820px !important;
+  background: rgba(18, 21, 26, 0.92) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 14px !important;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
   overflow: visible !important;
 }
@@ -4211,9 +4213,11 @@ section, [id] {
 .navigation.is-scrolled .nav__bar,
 .nav__bar.is-scrolled {
   margin: 14px auto 0 !important;
-  padding: 10px 24px !important;
-  max-width: 1320px !important;
-  border-radius: 12px !important;
+  padding: 8px 24px !important;
+  min-height: 48px !important;
+  width: 92% !important;
+  max-width: 820px !important;
+  border-radius: 14px !important;
   background: rgba(18, 21, 26, 0.92) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
@@ -4229,9 +4233,9 @@ section, [id] {
   flex-shrink: 0 !important;
 }
 .promec-nav-logo-svg {
-  height: 22px !important;
+  height: 18px !important;
   width: auto !important;
-  max-width: 240px !important;
+  max-width: 195px !important;
   display: block !important;
   transition: opacity 0.2s ease, transform 0.2s ease !important;
 }
@@ -4243,7 +4247,7 @@ section, [id] {
 .promec-nav-menu {
   display: flex !important;
   align-items: center !important;
-  gap: 28px !important;
+  gap: 24px !important;
 }
 .promec-nav-link {
   font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
@@ -4287,6 +4291,11 @@ section, [id] {
   display: flex !important;
   align-items: center !important;
   gap: 18px !important;
+}
+@media (min-width: 992px) {
+  .promec-nav-actions {
+    display: none !important;
+  }
 }
 .promec-nav-icon-btn {
   background: none !important;
