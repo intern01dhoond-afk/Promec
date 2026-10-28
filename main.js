@@ -243,6 +243,12 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", (e) => {
       const target = link.getAttribute("data-nav-target");
       if (!target) return;
+
+      const href = link.getAttribute("href");
+      if (href && (href.startsWith("http://") || href.startsWith("https://") || (!href.startsWith("#") && href.length > 1))) {
+        return;
+      }
+
       e.preventDefault();
 
       if (target === "home") {
