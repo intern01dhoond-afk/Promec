@@ -1541,7 +1541,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // -----------------------------------------------------------
     const rotationSection = document.getElementById("washer-rotation");
     if (rotationSection) {
-      const badge = rotationSection.querySelector(".promec-rotation-viewport__badge");
       const headline = rotationSection.querySelector(".promec-rotation-headline");
       const card = rotationSection.querySelector(".promec-rotation-card");
 
@@ -1553,20 +1552,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      if (badge) {
-        rotTl.fromTo(
-          badge,
-          { opacity: 0, y: -20 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", onComplete: () => clearPropsOnDone(badge) }
-        );
-      }
-
       if (headline) {
         rotTl.fromTo(
           headline,
           { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.85, ease: "power2.out", onComplete: () => clearPropsOnDone(headline) },
-          "-=0.3"
+          { opacity: 1, y: 0, duration: 0.85, ease: "power2.out", onComplete: () => clearPropsOnDone(headline) }
         );
       }
 
