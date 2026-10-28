@@ -5814,14 +5814,55 @@ section, [id] {
   }
 }
 
+/* ========================================================================= */
+/* UNIVERSAL SECTION REVEAL ANIMATIONS (HARDWARE ACCELERATION & SMOOTHNESS)  */
+/* ========================================================================= */
+.promec-possibilities__heading-col,
+.promec-possibilities__info-col,
+.promec-possibilities__card,
+.promec-rotation-headline,
+.promec-rotation-card,
+.promec-rotation-viewport__badge,
+.why-aquaforce-header,
+.why-aquaforce-card,
+.aqua-engineering__marquee-wrap,
+.aqua-engineering__divider,
+.aqua-engineering__left,
+.aqua-engineering__right,
+.promec-scatter__line,
+.aqua-testimonials__left,
+.aqua-testimonials__right,
+.aqua-cta-card,
+.aqua-cta-card__visual,
+.aqua-cta-card__img,
+.aqua-footer__col {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
 
-
-
-
-
-
-
-
-
-
-
+@media (prefers-reduced-motion: reduce) {
+  .promec-possibilities__heading-col,
+  .promec-possibilities__info-col,
+  .promec-possibilities__card,
+  .promec-rotation-headline,
+  .promec-rotation-card,
+  .promec-rotation-viewport__badge,
+  .why-aquaforce-header,
+  .why-aquaforce-card,
+  .aqua-engineering__marquee-wrap,
+  .aqua-engineering__divider,
+  .aqua-engineering__left,
+  .aqua-engineering__right,
+  .promec-scatter__line,
+  .aqua-testimonials__left,
+  .aqua-testimonials__right,
+  .aqua-cta-card,
+  .aqua-cta-card__visual,
+  .aqua-cta-card__img,
+  .aqua-footer__col {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

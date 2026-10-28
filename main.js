@@ -337,40 +337,6 @@ document.addEventListener("DOMContentLoaded", () => {
       onEnter: () => setActiveNavLink("about"),
       onLeaveBack: () => setActiveNavLink("solutions")
     });
-
-    const cards = engineeringSec.querySelectorAll(".aqua-engineering__card");
-    const heading = engineeringSec.querySelector(".aqua-engineering__heading");
-    const textCols = engineeringSec.querySelectorAll(".aqua-engineering__text-col");
-
-    if (cards.length > 0 && typeof gsap !== "undefined") {
-      gsap.from(cards, {
-        scrollTrigger: {
-          trigger: engineeringSec,
-          start: "top 75%",
-          once: true
-        },
-        y: 35,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: "power2.out"
-      });
-    }
-
-    if ((heading || textCols.length > 0) && typeof gsap !== "undefined") {
-      gsap.from([heading, ...textCols], {
-        scrollTrigger: {
-          trigger: ".aqua-engineering__grid",
-          start: "top 80%",
-          once: true
-        },
-        y: 25,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out"
-      });
-    }
   }
 
   const testimonialsSec = document.getElementById("testimonials");
@@ -382,38 +348,6 @@ document.addEventListener("DOMContentLoaded", () => {
       onEnter: () => setActiveNavLink("about"),
       onLeaveBack: () => setActiveNavLink("about")
     });
-
-    const leftCol = testimonialsSec.querySelector(".aqua-testimonials__left");
-    const cards = testimonialsSec.querySelectorAll(".aqua-testimonials__card");
-
-    if (leftCol && typeof gsap !== "undefined") {
-      gsap.from(leftCol, {
-        scrollTrigger: {
-          trigger: testimonialsSec,
-          start: "top 75%",
-          once: true
-        },
-        x: -30,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out"
-      });
-    }
-
-    if (cards.length > 0 && typeof gsap !== "undefined") {
-      gsap.from(cards, {
-        scrollTrigger: {
-          trigger: testimonialsSec,
-          start: "top 75%",
-          once: true
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.4,
-        stagger: 0.05,
-        ease: "power2.out"
-      });
-    }
   }
 
   const ctaBannerSec = document.getElementById("cta-banner");
@@ -425,37 +359,6 @@ document.addEventListener("DOMContentLoaded", () => {
       onEnter: () => setActiveNavLink("solutions"),
       onLeaveBack: () => setActiveNavLink("about")
     });
-
-    const cardContent = ctaBannerSec.querySelector(".aqua-cta-card__content, .aqua-cta-banner__header");
-    const visual = ctaBannerSec.querySelector(".aqua-cta-card__visual, .aqua-cta-banner__hero");
-
-    if (cardContent && typeof gsap !== "undefined") {
-      gsap.from(cardContent, {
-        scrollTrigger: {
-          trigger: ctaBannerSec,
-          start: "top 75%",
-          once: true
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out"
-      });
-    }
-
-    if (visual && typeof gsap !== "undefined") {
-      gsap.from(visual, {
-        scrollTrigger: {
-          trigger: ctaBannerSec,
-          start: "top 80%",
-          once: true
-        },
-        y: 40,
-        opacity: 0,
-        duration: 1.0,
-        ease: "power2.out"
-      });
-    }
   }
 
   const footerSec = document.querySelector(".aqua-footer");
@@ -557,17 +460,25 @@ document.addEventListener("DOMContentLoaded", () => {
   updateNavScrollState();
 
   // -------------------------------------------------------------
-  // 10. NEW HERO ENTRANCE ANIMATIONS & SMOOTH INTERACTIONS
+  // 10. SECTION 1: HERO ENTRANCE ANIMATIONS & SMOOTH INTERACTIONS
   // -------------------------------------------------------------
-  const newHeroHeading = document.querySelector(".promec-hero__heading");
-  const newHeroBadge = document.querySelector(".promec-hero__model-badge");
-  const newHeroDesc = document.querySelector(".promec-hero__description");
-  const newHeroActions = document.querySelector(".promec-hero__actions");
-  const newHeroVisual = document.querySelector(".promec-hero__visual-col");
-  const newFeatureItems = document.querySelectorAll(".promec-feature-item");
+  const heroSection = document.getElementById("overview") || document.querySelector(".promec-hero-section");
+  const newHeroHeading = heroSection ? heroSection.querySelector(".promec-hero__heading") : null;
+  const newHeroBadge = heroSection ? heroSection.querySelector(".promec-hero__model-badge") : null;
+  const newHeroDesc = heroSection ? heroSection.querySelector(".promec-hero__description") : null;
+  const newHeroActions = heroSection ? heroSection.querySelector(".promec-hero__actions") : null;
+  const newHeroVisual = heroSection ? heroSection.querySelector(".promec-hero__visual-col") : null;
+  const newFeatureItems = heroSection ? heroSection.querySelectorAll(".promec-feature-item") : [];
 
-  if (newHeroHeading) {
-    const heroTl = gsap.timeline({ delay: 0.15 });
+  if (newHeroHeading && typeof gsap !== "undefined") {
+    const heroTl = gsap.timeline({
+      delay: 0.15,
+      onComplete: () => {
+        gsap.set([newHeroHeading, newHeroBadge, newHeroDesc, newHeroActions, newHeroVisual, ...newFeatureItems].filter(Boolean), {
+          clearProps: "transform,opacity"
+        });
+      }
+    });
     heroTl
       .fromTo(newHeroHeading, { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.75, ease: "power2.out" })
       .fromTo(newHeroBadge, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "-=0.45")
@@ -1560,62 +1471,415 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // -------------------------------------------------------------
-  // 19B. UNIVERSAL WORD-BY-WORD & SECTION REVEAL ANIMATIONS
+  // 19B. COMPREHENSIVE UNIVERSAL SECTION REVEAL ANIMATIONS
+  // Delivers premium, coordinated scroll entrance reveals for
+  // EACH AND EVERY section of the Promec AquaForce landing page.
   // -------------------------------------------------------------
-  if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-    // 1. Word-by-word reveal for all headings with data-word-reveal
-    const wordRevealHeadings = document.querySelectorAll("[data-word-reveal]");
-    wordRevealHeadings.forEach((heading) => {
-      if (heading.getAttribute("data-word-split")) return;
-      heading.setAttribute("data-word-split", "true");
+  function initUniversalSectionReveals() {
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      const rawText = heading.textContent.trim();
-      const words = rawText.split(/\s+/);
-      heading.innerHTML = words.map(w => `<span class="reveal-word">${w}</span>`).join(" ");
+    // Helper to safely clear inline transforms and opacity after reveal finishes
+    const clearPropsOnDone = (elements) => {
+      if (!elements) return;
+      gsap.set(elements, { clearProps: "transform,opacity" });
+    };
 
-      const revealSpans = heading.querySelectorAll(".reveal-word");
+    // -----------------------------------------------------------
+    // SECTION 2: MULTIPLE POSSIBILITIES (#applications)
+    // -----------------------------------------------------------
+    const appsSection = document.getElementById("applications");
+    if (appsSection) {
+      const headingCol = appsSection.querySelector(".promec-possibilities__heading-col");
+      const infoCol = appsSection.querySelector(".promec-possibilities__info-col");
+      const cards = appsSection.querySelectorAll(".promec-possibilities__card");
 
-      gsap.fromTo(
-        revealSpans,
-        { opacity: 0.18, y: 8 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.03,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: heading,
-            start: "top 85%",
-            end: "bottom 55%",
-            scrub: 0.5,
-          }
+      const appsTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: appsSection,
+          start: "top 78%",
+          once: true,
         }
-      );
-    });
+      });
 
-    // 2. Smooth Section Fade & Slide Entrance Reveals
-    const revealTargets = document.querySelectorAll(
-      ".aqua-story__text-col, .aqua-engineering__left, .aqua-engineering__right, .aqua-testimonials__left, .aqua-cta-banner__header"
-    );
-
-    revealTargets.forEach((target) => {
-      gsap.fromTo(
-        target,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: target,
-            start: "top 82%",
-            once: true,
+      if (headingCol || infoCol) {
+        const headerEls = [headingCol, infoCol].filter(Boolean);
+        appsTl.fromTo(
+          headerEls,
+          { opacity: 0, y: 35 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.12,
+            ease: "power2.out",
+            onComplete: () => clearPropsOnDone(headerEls)
           }
+        );
+      }
+
+      if (cards.length > 0) {
+        appsTl.fromTo(
+          cards,
+          { opacity: 0, y: 45, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out",
+            onComplete: () => clearPropsOnDone(cards)
+          },
+          "-=0.45"
+        );
+      }
+    }
+
+    // -----------------------------------------------------------
+    // SECTION 3: 360° WASHER ROTATION (#washer-rotation)
+    // -----------------------------------------------------------
+    const rotationSection = document.getElementById("washer-rotation");
+    if (rotationSection) {
+      const badge = rotationSection.querySelector(".promec-rotation-viewport__badge");
+      const headline = rotationSection.querySelector(".promec-rotation-headline");
+      const card = rotationSection.querySelector(".promec-rotation-card");
+
+      const rotTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: rotationSection,
+          start: "top 75%",
+          once: true,
         }
+      });
+
+      if (badge) {
+        rotTl.fromTo(
+          badge,
+          { opacity: 0, y: -20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power2.out", onComplete: () => clearPropsOnDone(badge) }
+        );
+      }
+
+      if (headline) {
+        rotTl.fromTo(
+          headline,
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.85, ease: "power2.out", onComplete: () => clearPropsOnDone(headline) },
+          "-=0.3"
+        );
+      }
+
+      if (card) {
+        rotTl.fromTo(
+          card,
+          { opacity: 0, y: 35, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: "power2.out", onComplete: () => clearPropsOnDone(card) },
+          "-=0.5"
+        );
+      }
+    }
+
+    // -----------------------------------------------------------
+    // SECTION 4: WHY AQUAFORCE BENTO GRID (#why-aquaforce)
+    // -----------------------------------------------------------
+    const whySection = document.getElementById("why-aquaforce");
+    if (whySection) {
+      const header = whySection.querySelector(".why-aquaforce-header");
+      const bentoCards = whySection.querySelectorAll(".why-aquaforce-card");
+
+      const whyTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: whySection,
+          start: "top 78%",
+          once: true,
+        }
+      });
+
+      if (header) {
+        whyTl.fromTo(
+          header,
+          { opacity: 0, y: 35 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", onComplete: () => clearPropsOnDone(header) }
+        );
+      }
+
+      if (bentoCards.length > 0) {
+        whyTl.fromTo(
+          bentoCards,
+          { opacity: 0, y: 40, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.12,
+            ease: "power2.out",
+            onComplete: () => clearPropsOnDone(bentoCards)
+          },
+          "-=0.45"
+        );
+      }
+    }
+
+    // -----------------------------------------------------------
+    // SECTION 5: ENGINEERING & HERITAGE SHOWCASE (#engineering)
+    // -----------------------------------------------------------
+    const engSection = document.getElementById("engineering");
+    if (engSection) {
+      const marqueeWrap = engSection.querySelector(".aqua-engineering__marquee-wrap");
+      const divider = engSection.querySelector(".aqua-engineering__divider");
+      const heading = engSection.querySelector(".aqua-engineering__heading");
+      const textCols = engSection.querySelectorAll(".aqua-engineering__text-col");
+
+      if (marqueeWrap) {
+        gsap.fromTo(
+          marqueeWrap,
+          { opacity: 0, y: 25 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: engSection,
+              start: "top 80%",
+              once: true,
+            },
+            onComplete: () => clearPropsOnDone(marqueeWrap)
+          }
+        );
+      }
+
+      if (divider) {
+        gsap.fromTo(
+          divider,
+          { scaleX: 0, transformOrigin: "left center" },
+          {
+            scaleX: 1,
+            duration: 0.9,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: engSection,
+              start: "top 75%",
+              once: true,
+            }
+          }
+        );
+      }
+
+      if (heading || textCols.length > 0) {
+        const narrativeEls = [heading, ...textCols].filter(Boolean);
+        gsap.fromTo(
+          narrativeEls,
+          { opacity: 0, y: 35 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            stagger: 0.14,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".aqua-engineering__grid",
+              start: "top 82%",
+              once: true,
+            },
+            onComplete: () => clearPropsOnDone(narrativeEls)
+          }
+        );
+      }
+    }
+
+    // -----------------------------------------------------------
+    // SECTION 6: FLOATING TILES PORTFOLIO SCATTER (#portfolio-scatter)
+    // -----------------------------------------------------------
+    const scatterSection = document.getElementById("portfolio-scatter");
+    if (scatterSection) {
+      const tilesStage = scatterSection.querySelector(".promec-scatter__tiles-stage");
+      const headlineWrap = scatterSection.querySelector(".promec-scatter__headline-wrap");
+      const headlineLines = scatterSection.querySelectorAll(".promec-scatter__line");
+
+      if (tilesStage) {
+        gsap.fromTo(
+          tilesStage,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 1.0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: scatterSection,
+              start: "top 82%",
+              once: true,
+            },
+            onComplete: () => clearPropsOnDone(tilesStage)
+          }
+        );
+      }
+
+      if (headlineLines.length > 0) {
+        gsap.fromTo(
+          headlineLines,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            stagger: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: headlineWrap || scatterSection,
+              start: "top 82%",
+              once: true,
+            },
+            onComplete: () => clearPropsOnDone(headlineLines)
+          }
+        );
+      }
+    }
+
+    // -----------------------------------------------------------
+    // SECTION 7: TESTIMONIALS SHOWCASE (#testimonials)
+    // -----------------------------------------------------------
+    const testimonialsSection = document.getElementById("testimonials");
+    if (testimonialsSection) {
+      const leftCol = testimonialsSection.querySelector(".aqua-testimonials__left");
+      const rightCol = testimonialsSection.querySelector(".aqua-testimonials__right");
+
+      const testTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: testimonialsSection,
+          start: "top 76%",
+          once: true,
+        }
+      });
+
+      if (leftCol) {
+        testTl.fromTo(
+          leftCol,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.85,
+            ease: "power2.out",
+            onComplete: () => clearPropsOnDone(leftCol)
+          }
+        );
+      }
+
+      if (rightCol) {
+        testTl.fromTo(
+          rightCol,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power2.out",
+            onComplete: () => clearPropsOnDone(rightCol)
+          },
+          "-=0.55"
+        );
+      }
+    }
+
+    // -----------------------------------------------------------
+    // SECTION 8: CTA PRODUCT BANNER (#cta-banner)
+    // -----------------------------------------------------------
+    const ctaSection = document.getElementById("cta-banner");
+    if (ctaSection) {
+      const ctaCard = ctaSection.querySelector(".aqua-cta-card");
+      const ctaContentEls = ctaSection.querySelectorAll(
+        ".aqua-cta-card__heading, .aqua-cta-card__desc, .aqua-cta-card__actions"
       );
-    });
+      const ctaVisual = ctaSection.querySelector(".aqua-cta-card__visual, .aqua-cta-card__img");
+
+      const ctaTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ctaSection,
+          start: "top 78%",
+          once: true,
+        }
+      });
+
+      if (ctaCard) {
+        ctaTl.fromTo(
+          ctaCard,
+          { opacity: 0, y: 40, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            onComplete: () => clearPropsOnDone(ctaCard)
+          }
+        );
+      }
+
+      if (ctaContentEls.length > 0) {
+        ctaTl.fromTo(
+          ctaContentEls,
+          { opacity: 0, y: 25 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: "power2.out",
+            onComplete: () => clearPropsOnDone(ctaContentEls)
+          },
+          "-=0.5"
+        );
+      }
+
+      if (ctaVisual) {
+        ctaTl.fromTo(
+          ctaVisual,
+          { opacity: 0, y: 45, scale: 0.9 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.9,
+            ease: "power2.out",
+            onComplete: () => clearPropsOnDone(ctaVisual)
+          },
+          "-=0.6"
+        );
+      }
+    }
+
+    // -----------------------------------------------------------
+    // SECTION 9: AQUAFORCE DARK FOOTER (#footer)
+    // -----------------------------------------------------------
+    const footerSection = document.getElementById("footer") || document.querySelector(".aqua-footer");
+    if (footerSection) {
+      const footerCols = footerSection.querySelectorAll(".aqua-footer__col");
+      if (footerCols.length > 0) {
+        gsap.fromTo(
+          footerCols,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.75,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: footerSection,
+              start: "top 88%",
+              once: true,
+            },
+            onComplete: () => clearPropsOnDone(footerCols)
+          }
+        );
+      }
+    }
   }
+
+  initUniversalSectionReveals();
 
   // -------------------------------------------------------------
   // 20. SECTION 3: SOLUTIONS SHOWCASE INTERACTIVE CAROUSEL
