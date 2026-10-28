@@ -3196,13 +3196,13 @@ div.btn-icon-link.theme-yellow:hover .btn-icon-content {
   max-width: 1320px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.25fr;
-  gap: 64px;
+  grid-template-columns: 1.1fr 1.2fr;
+  gap: 48px;
   align-items: center;
 }
 
 .aqua-testimonials__left {
-  max-width: 540px !important;
+  max-width: 600px !important;
 }
 
 .aqua-testimonials__heading {
@@ -5321,7 +5321,7 @@ section, [id] {
 
 .promec-rotation-content {
   pointer-events: auto !important;
-  max-width: 580px !important;
+  max-width: 640px !important;
   width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
@@ -5330,7 +5330,7 @@ section, [id] {
 
 .promec-rotation-headline {
   font-family: "Neue Montreal", "PP Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  font-size: clamp(38px, 4.2vw, 56px) !important;
+  font-size: 54px !important;
   line-height: 1.05 !important;
   letter-spacing: -0.035em !important;
   margin: 0 0 24px 0 !important;
