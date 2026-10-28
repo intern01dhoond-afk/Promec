@@ -4304,7 +4304,7 @@ section, [id] {
   color: #ffffff !important;
 }
 
-/* Hero Section with Hero_desk.png */
+/* Hero Section with Hero_desk.webp */
 .promec-hero-section {
   position: relative !important;
   width: 100% !important;
@@ -4315,7 +4315,7 @@ section, [id] {
   flex-direction: column !important;
   justify-content: space-between !important;
   background-color: #f0f3f6 !important;
-  background-image: url('assets/Hero_desk.png') !important;
+  background-image: url('assets/Hero_desk.webp') !important;
   background-position: right bottom !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
@@ -4578,7 +4578,7 @@ section, [id] {
 /* Mobile & Tablet Responsiveness */
 @media (max-width: 991px) {
   .promec-hero-section {
-    background-image: url('assets/Hero_mobile.png') !important;
+    background-image: url('assets/Hero_mobile.webp') !important;
     background-position: center bottom !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
